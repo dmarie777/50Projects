@@ -1,0 +1,25 @@
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #383838;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1f1f1f;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; 
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+
