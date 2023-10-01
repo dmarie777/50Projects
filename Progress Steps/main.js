@@ -3,25 +3,35 @@ const prev = document.getElementById('prev')
 const circles = document.querySelectorAll('.circle')
 const progress = document.getElementById('progress')
 
-let count= 1;
+let currentActive= 1;
 
 next.addEventListener('click', () => {
-    circles[count].classList.add('active')
-    progress.style.width = `${(100/(circles.length-1))*count}%`
-    count++
+    currentActive++
+    progress.style.width = `${(100/(circles.length-1))*(currentActive-1)}%`
+    update()
     verifyDisable()
 })
 prev.addEventListener('click', () => {
-    count --
-    circles[count].classList.remove('active')
-    progress.style.width = `${(100/(circles.length-1))*(count-1)}%`
+    currentActive --
+    progress.style.width = `${(100/(circles.length-1))*(currentActive-1)}%`
+    update()
     verifyDisable()
 })
 
+function update() {
+  circles.forEach((circle, id) => {
+    if (id < currentActive) {
+        circle.classList.add('active')
+    } else {
+        circle.classList.remove('active')
+    }
+  })
+}
+
 function verifyDisable () {
-    if (count >=circles.length) {
+    if (currentActive >=circles.length) {
         next.disabled = true
-    } else if (count <=1) {
+    } else if (currentActive <=1) {
         prev.disabled = true
     }  else {
         prev.disabled = false;
