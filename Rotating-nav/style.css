@@ -9,4 +9,11 @@ body {
     overflow-x: hidden ;
     margin: 0;
 }
-
+.container {
+    background-color: #fafafa;
+    transform-origin: top left;
+    transition: transform 0.5s linear;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+  }
