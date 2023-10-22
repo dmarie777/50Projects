@@ -8,12 +8,26 @@
     width: 90vw;
     overflow: hidden;
 }
+
+.container {
+    -webkit-mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+      );
+      mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent)
+}
+
 .panel {
     flex: 0.5;
     background-size: cover;
+    background-position: center;
     height: 90vh;
+    border-radius: 50px;
     -webkit-transition: all 700ms ease-in;
-    transition: all 700ms ease-in;
+    transition: all 1000ms ease-in-out;
 }
 .active:hover {
     flex: 5;
