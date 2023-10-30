@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color1: radial-gradient(circle at 136% 349%,#374151,#244470,#000);
+    --color2: radial-gradient(circle at 50% -250%,#1d74ff4f,#41523e,#000);
+    --shadow-color:220 3% 15%;
+    --shadow-strength:1%
+}
+
+.media-scroller {
+    --_spacer: 1rem;
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: 21%;
+
+    padding: 0 var(--_spacer) var(--_spacer) var(--_spacer);
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+
+}
+
+.media-element {
+    padding: var(--_spacer);
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+.media-element > img {
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--_spacer, 1rem);
+}
+
+.snaps-inline > * {
+    scroll-snap-align: start;
+}
+
+.container {
+    inline-size: min(100% - 4rem, 70rem);
+    margin-inline: auto;
+}
+
+.page-header {
+    padding-block: 4rem;
+    margin-block-end: var(--_spacer);
+    background: radial-gradient(circle at 50% -250%,transparent,#3f668c,transparent);
+    color: #0b3b57;
+    box-shadow: 0 3px 5px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 3%)),0 7px 14px -5px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 5%));
+}
