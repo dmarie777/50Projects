@@ -23,18 +23,21 @@
     overflow-x: auto;
     overscroll-behavior-inline: contain;
 
-}
+    & div {
+        padding: var(--_spacer);
+        background: #e9ecef;
+        border-radius: 5px;
+        
+        &:hover {
+            outline: 3px ridge rgb(106, 134, 153);
+        }
+    }
 
-.media-element {
-    padding: var(--_spacer);
-    background: #e9ecef;
-    border-radius: 5px;
-}
-
-.media-element > img {
-    inline-size: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+    & img {
+        inline-size: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
 }
 
 .snaps-inline {
