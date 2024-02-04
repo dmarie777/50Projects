@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+:root {
+    --size: 20;
+}
+.container {
+    display: grid;
+    max-height: 100vh;
+    grid-template-columns: repeat(var(--size), 1fr);
+    overflow-y: hidden;
+}
+
+.grid {
+    border: 1px solid red;
+    aspect-ratio: 1;
+}
