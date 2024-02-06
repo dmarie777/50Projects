@@ -15,6 +15,14 @@
 }
 
 .grid {
-    border: 1px solid red;
+    border: 1px solid transparent;
     aspect-ratio: 1;
+    background: hsla(0, 0%, 80%, 0.356);
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+    .grid {
+        background: hsl(0 0% 100%/0.1);
+        backdrop-filter: blur(1rem);
+    }
 }
