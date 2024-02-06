@@ -6,7 +6,7 @@ const windowWidth = window.innerWidth;
 
 const gridColumns = rootStyles.getPropertyValue('--size');
 const gridWidth = Math.round(windowWidth/gridColumns);
-const gridRows = Math.round(windowHeight/gridWidth);
+const gridRows = Math.ceil(windowHeight/gridWidth);
 
 function createGrid() {
     for (let i=0; i<gridRows*gridColumns; i++) {
