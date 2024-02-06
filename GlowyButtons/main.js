@@ -15,4 +15,8 @@ function createGrid() {
         container.appendChild(newDiv);
     }
 }
+function setPosition() {
+    document.documentElement.style.setProperty('--endWindow', `${windowWidth+200}px` )
+}
 createGrid()
+setPosition()
