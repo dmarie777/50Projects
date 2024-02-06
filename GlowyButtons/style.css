@@ -6,7 +6,31 @@
 }
 :root {
     --size: 20;
+    --endWindow: 0;
 }
+body {
+    background: 
+    radial-gradient(
+        circle 900px at -300px 20px,  
+        rgb(0, 6, 8) 0%,
+        rgba(1, 7, 18, 0.422) 42%,
+        transparent 100%
+    ),
+    radial-gradient(
+        circle 900px at var(--endWindow) 20px,  
+        rgb(0, 6, 8) 0%,
+        rgba(1, 7, 18, 0.422) 42%,
+        transparent 100%
+    ),
+    linear-gradient(
+        to bottom,
+        rgb(4, 15, 36) 0% ,
+        rgb(33, 89, 162) 50%,
+        transparent 100%
+    )    
+    ;
+}
+
 .container {
     display: grid;
     max-height: 100vh;
