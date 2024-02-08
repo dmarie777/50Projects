@@ -6,7 +6,10 @@
 }
 :root {
     --size: 20;
-    --endWindow: 0;
+    --x: 0;
+    --y: 0;
+    --xp: 0;
+    --width:0;
 }
 body {
     background: 
@@ -17,7 +20,7 @@ body {
         transparent 100%
     ),
     radial-gradient(
-        circle 900px at var(--endWindow) 20px,  
+        circle 900px at var(--width) 20px,  
         rgb(0, 6, 8) 0%,
         rgba(1, 7, 18, 0.422) 42%,
         transparent 100%
@@ -27,23 +30,43 @@ body {
         rgb(4, 15, 36) 0% ,
         rgb(33, 89, 162) 50%,
         transparent 100%
-    )    
-    ;
+    );
 }
-
 .container {
     display: grid;
     max-height: 100vh;
     grid-template-columns: repeat(var(--size), 1fr);
     overflow-y: hidden;
 }
-
 .grid {
     border: 1px solid transparent;
     aspect-ratio: 1;
     background: hsla(0, 0%, 80%, 0.356);
+    position: relative;
 }
-
+.grid::after {
+    content: "";
+    position: absolute;
+    z-index: 99;
+    inset: -100px;
+    background: 
+    linear-gradient(
+        rgba(0, 0, 0, 0.211),
+        rgba(0, 0, 0, 0.324) 
+    ) padding-box,
+    radial-gradient(
+        circle 500px,
+        hsl(var(--x) 80% 80%) 0%,
+        transparent 20%,
+        transparent 50%
+    ) calc((var(--x)*1px) - (100vw*0.5)) calc(var(--y)*1px  - (100vh*0.5)) no-repeat fixed,
+    linear-gradient(
+        rgba(0, 0, 0, 0.254),
+        rgba(0, 0, 0, 0.327)
+    ) border-box
+    ;
+    padding: 1rem 2rem;
+}
 @supports (backdrop-filter: blur(1rem)) {
     .grid {
         background: hsl(0 0% 100%/0.1);
