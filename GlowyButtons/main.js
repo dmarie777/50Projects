@@ -16,7 +16,14 @@ function createGrid() {
     }
 }
 function setPosition() {
-    document.documentElement.style.setProperty('--endWindow', `${windowWidth+200}px` )
+    document.documentElement.style.setProperty('--width', `${windowWidth.toFixed(2)}` );
 }
+
+function syncPosition({x: pointerX, y: pointerY}) {
+    document.documentElement.style.setProperty('--x', pointerX);
+    document.documentElement.style.setProperty('--y', pointerY);
+    console.log(pointerX, pointerY);
+}
+document.addEventListener('pointermove', syncPosition)
+window.addEventListener("load", setPosition)
 createGrid()
-setPosition()
