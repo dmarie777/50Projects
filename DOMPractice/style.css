@@ -1,0 +1,35 @@
+*,
+*>::after,
+*::before {
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+}
+
+.content-box {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 100px 10px;
+}
+
+.nodes-box {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    gap: 10px ;
+}
+
+.node {
+    min-width: 50px;
+    max-height: 50px;
+    background: blue;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
