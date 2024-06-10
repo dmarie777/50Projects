@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 62.5%;
+}
+
+section {
+    min-height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(222, 223, 225);
+    color: black;
+    font-size: 2rem;
+}
+h1 {
+    position: fixed;
+}
+
+.card {
+    height: 85vh;
+    width: 25%;
+    border: 1px solid green;
+    position: absolute;
+}
