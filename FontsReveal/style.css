@@ -5,24 +5,53 @@
 
 body {
     font-size: 62.5%;
+    background: rgb(222, 223, 225);
 }
 
 section {
-    min-height: 100vh;
-    display:flex;
-    align-items: center;
-    justify-content: space-around;
-    background: rgb(222, 223, 225);
     color: black;
     font-size: 2rem;
 }
 h1 {
     position: fixed;
 }
+/* animation for typeface text */
+.main {
+    height: 200vh;
+    display:flex;
+    padding-top: 50vh;
+    justify-content: space-around;
+    animation: fade-out ease-out forwards;
+    animation-timeline: scroll();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        translate: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        translate: translateY(50%);
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+}
 
 .card {
     height: 85vh;
-    width: 25%;
+    width: 80vw;
     border: 1px solid green;
-    position: absolute;
 }
+
+.title-container {
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
