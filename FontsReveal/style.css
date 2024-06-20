@@ -40,7 +40,9 @@ h1 {
 .cards-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
     overflow-x: scroll;
+    height: 100vh;
 }
 
 .card {
@@ -54,4 +56,3 @@ h1 {
     display: flex;
     justify-content: center;
 }
-

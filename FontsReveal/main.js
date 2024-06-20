@@ -20,7 +20,7 @@ scrollContainer.addEventListener('wheel', (event) => {
 const obeserverOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.5 
+    threshold: 0 
 };
 
 const observerCallback = (entries, observer) => {
