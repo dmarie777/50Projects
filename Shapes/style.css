@@ -1,0 +1,21 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+canvas {
+    display: block;
+    position: fixed;
+
+}
+section {
+    height: 200vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-top: 45vh;
+    align-items: center;
+}
+h1 {
+    position: fixed;
+}
