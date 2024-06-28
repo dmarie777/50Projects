@@ -1,21 +1,57 @@
+:root {
+    --main_color: rgb(247, 37, 133);
+    --secondary_color_1: rgb(181, 23, 158);
+    --secondary_color_2: rgb(114, 9, 183);
+    --secondary_color_3: rgb(86, 11, 173);
+    --secondary_color_4: rgb(72, 12, 168);
+    --secondary_color_5: rgb(58, 12, 163);
+}
+
 html, body {
     margin: 0;
     padding: 0;
+    color: white;
+    background: rgb(13, 25, 57);
+    overflow: none;
 }
 canvas {
     display: block;
-    position: fixed;
-
 }
+
 section {
-    height: 200vh;
     width: 100%;
-    position: absolute;
     display: flex;
     flex-direction: column;
-    margin-top: 45vh;
     align-items: center;
 }
+
+.scroll-container {
+    height: 200vh;
+}
+
 h1 {
     position: fixed;
+    margin-top: 50%;
+    font-size: 2.5rem;
+}
+
+.cards-container {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 60%;
+}
+
+.card {
+    width: 150px;
+    aspect-ratio: 2/0.7;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    background-color: rgba(223, 231, 234, 0.518);
+}
+
+.nonScroll {
+    justify-content: center;
+    align-items: end;
 }
