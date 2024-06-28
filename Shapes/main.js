@@ -13,10 +13,14 @@ canvas.height = scrollContainer.offsetHeight;
 scrollContainer.addEventListener('wheel', (event) => {
     ctx.clearRect(0,0, canvas.width, canvas.height);
     
-    //Draw background 
-    ctx.fillStyle = back_color;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    drawBackground();
+    drawShapes();
+})
 
+window.addEventListener('resize', () => {
+    canvas.width = scrollContainer.offsetWidth;
+    canvas.height = scrollContainer.offsetHeight;
+    drawBackground();
     drawShapes();
 })
 
@@ -33,9 +37,14 @@ function drawShapes() {
         } 
     }
 }
-//Draw background 
-ctx.fillStyle = back_color;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-drawShapes();
+function drawBackground() {
+    ctx.fillStyle = back_color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+window.onload = function() {
+    drawBackground();
+    drawShapes();
+}
 
