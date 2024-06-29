@@ -1,6 +1,8 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const scrollContainer = document.querySelector('.scroll-container');
+const buttons = document.querySelectorAll('.button')
+let shape = 'rectangle';
 
 const colors = ['144 202 249', '100 181 246', '66 165 245', '33 150 243', '30 136 229', '25 118 210', '21 101 192', '13 71 161']
 const back_color = 'rgb(5, 25, 35)';
@@ -10,11 +12,23 @@ const back_color = 'rgb(5, 25, 35)';
 canvas.width = scrollContainer.offsetWidth;
 canvas.height = scrollContainer.offsetHeight;
 
+buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        let buttonTarget = event.target.closest('button.button');
+        if (buttonTarget) {
+            shape = buttonTarget.id;
+            console.log(shape);
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            drawer.draw(shape);
+        }
+    })
+})
 
 scrollContainer.addEventListener('wheel', (event) => {
     ctx.clearRect(0,0, canvas.width, canvas.height);
     drawer.drawBackground();
-    drawer.draw('triangle');
+    console.log(shape);
+    drawer.draw(shape);
 
 })
 
@@ -22,7 +36,7 @@ window.addEventListener('resize', () => {
     canvas.width = scrollContainer.offsetWidth;
     canvas.height = scrollContainer.offsetHeight;
     drawer.drawBackground();
-    drawer.draw('triangle');
+    drawer.draw(shape);
 })
 
 
@@ -39,7 +53,7 @@ class Drawer {
                     ctx.strokeRect(x,y, Math.random()*this.size, 150);
                 } else if (options == 0 && shape==='circle') {
                     ctx.beginPath();
-                    ctx.arc(x,y, size *2, 0, 2*Math.PI);
+                    ctx.arc(x,y, this.size, 0, 2*Math.PI);
                     ctx.stroke();
                 } else if (options == 0 && shape==='triangle'){
                     ctx.beginPath();
@@ -48,7 +62,6 @@ class Drawer {
                             ctx.lineTo(x - this.size / 2, y + this.size*3);
                             ctx.closePath();
                             ctx.stroke();
-
                 }
             } 
         }
@@ -63,6 +76,6 @@ const drawer = new Drawer(50);
 
 window.onload = function() {
     drawer.drawBackground();
-    drawer.draw('triangle');
+    drawer.draw(shape);
 }
 
