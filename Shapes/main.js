@@ -11,7 +11,14 @@ const back_color = 'rgb(5, 25, 35)';
 //Define canvas size
 canvas.width = scrollContainer.offsetWidth;
 canvas.height = scrollContainer.offsetHeight;
+window.addEventListener('resize', () => {
+    canvas.width = scrollContainer.offsetWidth;
+    canvas.height = scrollContainer.offsetHeight;
+    drawer.drawBackground();
+    drawer.draw(shape);
+})
 
+//events
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
         let buttonTarget = event.target.closest('button.button');
@@ -32,14 +39,6 @@ scrollContainer.addEventListener('wheel', (event) => {
 
 })
 
-window.addEventListener('resize', () => {
-    canvas.width = scrollContainer.offsetWidth;
-    canvas.height = scrollContainer.offsetHeight;
-    drawer.drawBackground();
-    drawer.draw(shape);
-})
-
-
 class Drawer {
     constructor(size) {
         this.size = size
@@ -53,7 +52,7 @@ class Drawer {
                     ctx.strokeRect(x,y, Math.random()*this.size, 150);
                 } else if (options == 0 && shape==='circle') {
                     ctx.beginPath();
-                    ctx.arc(x,y, this.size, 0, 2*Math.PI);
+                    ctx.arc(x,y, Math.floor(Math.random()*this.size), 0, 2*Math.PI);
                     ctx.stroke();
                 } else if (options == 0 && shape==='triangle'){
                     ctx.beginPath();
