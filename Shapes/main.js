@@ -57,8 +57,8 @@ class Drawer {
                 } else if (options == 0 && shape==='triangle'){
                     ctx.beginPath();
                             ctx.moveTo(x, y);
-                            ctx.lineTo(x + this.size / 2, y + this.size*2);
-                            ctx.lineTo(x - this.size / 2, y + this.size*3);
+                            ctx.lineTo(x + this.size / 2, y + this.size*Math.floor(Math.random()*3));
+                            ctx.lineTo(x - this.size / 2, y + this.size*Math.floor(Math.random()*3));
                             ctx.closePath();
                             ctx.stroke();
                 }
