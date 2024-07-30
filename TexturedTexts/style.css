@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main, section {
+    min-height: 100vh;
+    display: flex;
+    padding: 0 70px;
+}
+
+main {
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+h1,h2 {
+    text-transform: uppercase;
+}
