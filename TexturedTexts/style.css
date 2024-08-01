@@ -44,9 +44,10 @@ h2 {
     width: 70%;
 }
 
-.mask{
+.mask {
     width: 100%;
     color: white;
     mask-image: url(./img/splatterMask2.png); 
     mask-size: 10%;
 }
+
