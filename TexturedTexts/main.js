@@ -19,12 +19,12 @@ font.load().then(loadedFont => {
             drawText();
         }
     }
+}).catch(error => {
+    console.error("Failed to load font:", error);
 });
 
 function drawText() {
     ctx.fillStyle = ctx.createPattern(img, 'repeat');
     ctx.textAlign = 'start';
-    const x = canvas.width / 2;
     ctx.fillText("USING THE HTML5 CANVAS", 0, 200);
-    ctx.fill();
 }
