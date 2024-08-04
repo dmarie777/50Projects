@@ -20,6 +20,12 @@ main {
 
 section {
     align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box1, .box2 {
+    width: 40vw;
 }
 
 h1,h2 {
@@ -41,11 +47,11 @@ h2 {
 
 .maskContainer {
     background: linear-gradient(70deg, rgb(17, 17, 13) 0%, red, yellow 65%, transparent 85%);
-    width: 70%;
+    /* width: 100%; */
 }
 
 .mask {
-    width: 100%;
+    /* width: 100%; */
     color: white;
     mask-image: url(./img/splatterMask2.png); 
     mask-size: 10%;
