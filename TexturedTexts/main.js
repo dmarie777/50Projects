@@ -1,4 +1,7 @@
 const canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth*0.4;
+canvas.height = window.innerHeight;
+
 const ctx = canvas.getContext("2d");
 
 const img = document.createElement("img");
@@ -26,5 +29,6 @@ font.load().then(loadedFont => {
 function drawText() {
     ctx.fillStyle = ctx.createPattern(img, 'repeat');
     ctx.textAlign = 'start';
-    ctx.fillText("USING THE HTML5 CANVAS", 0, 200);
+    ctx.fillText("USING THE HTML5 ", 0, 200);
+    ctx.fillText("CANVAS", 0, 250);
 }
