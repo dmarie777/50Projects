@@ -29,6 +29,6 @@ font.load().then(loadedFont => {
 function drawText() {
     ctx.fillStyle = ctx.createPattern(img, 'repeat');
     ctx.textAlign = 'start';
-    ctx.fillText("USING THE HTML5 ", 0, 200);
-    ctx.fillText("CANVAS", 0, 250);
+    ctx.fillText("USING THE HTML5 ", 0, canvas.height/2);
+    ctx.fillText("CANVAS", 0, canvas.height/2+50);
 }

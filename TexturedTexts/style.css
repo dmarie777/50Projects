@@ -28,6 +28,10 @@ section {
     width: 40vw;
 }
 
+svg {
+    width: 40vw;
+}
+
 h1,h2 {
     text-transform: uppercase;
 }
@@ -47,11 +51,9 @@ h2 {
 
 .maskContainer {
     background: linear-gradient(70deg, rgb(17, 17, 13) 0%, red, yellow 65%, transparent 85%);
-    /* width: 100%; */
 }
 
 .mask {
-    /* width: 100%; */
     color: white;
     mask-image: url(./img/splatterMask2.png); 
     mask-size: 10%;
