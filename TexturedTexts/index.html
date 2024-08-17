@@ -8,8 +8,33 @@
 </head>
 <body>
     <main>
-        <h1>My textured texts</h1>
+        <svg class="svgMain" id="mainSVG" width="100vw" height="200vh" viewBox="0 0 600 300" >
+            <filter id="conform" x="-50%" y="-150vh" width="100vw" height="200vh"> 
+                <feImage xlink:href="./img/mainBackground.webp" x="0" y="-150vh" width="100%" height="300vh" preserveAspectRatio="none"></feImage>
+                <!-- desaturate the image -->
+                <feColorMatrix type="saturate" values="0" result="IMAGE"></feColorMatrix>
+                <!-- decrease level of details -->
+                <feGaussianBlur in="IMAGE" stdDeviation="0.25" result="MAP"></feGaussianBlur>
+                <!-- distort the text -->
+                <feDisplacementMap in="SourceGraphic" in2="MAP" scale="10" xChannelSelector="R" yChannelSelector="R" result="TEXTURED_TEXT"></feDisplacementMap>
+                <!-- add the image as a background behind the text again -->
+                <feImage xlink:href="./img/mainBackground.webp" x="0" y="-150vh" width="100%" height="300vh" preserveAspectRatio="none" result="BG"></feImage>
+                <feColorMatrix in="TEXTURED_TEXT" result="TEXTURED_TEXT_2" type="matrix" values="1 0 0 0 0 
+                       0 1 0 0 0 
+                       0 0 1 0 0 
+                       0 0 0 .9 0"></feColorMatrix>
+                <!--  blend the text with the background image -->
+                <feBlend in="BG" in2="TEXTURED_TEXT_2" mode="multiply" result="BLENDED_TEXT"></feBlend>
+                <!-- layer the text on top of the background image -->
+                <feMerge>
+                    <feMergeNode in="BG"></feMergeNode>
+                    <feMergeNode in="BLENDED_TEXT"></feMergeNode>
+                </feMerge>
+            </filter>
+            <text  dx="60" dy="0" y = "0vh" font-size="2em"  font-weight="bold" filter="url(#conform)" fill="660708"> TEXTURED TEXTS</text>
+        </svg>
     </main>
+
     <div class="texturedTexts transitionStart">
         <section >
             <div class="backgroundClip box1">
@@ -24,7 +49,7 @@
                 <h2 class="mask">Using mask-image</h2>
             </div>
             <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
         </section>
         <section>
             <div class="box1">
@@ -32,15 +57,15 @@
                     <title>Adding texture using SVG clipPath</title>
                     <defs>
                         <clippath id="my-path">
-                            <text x= "0" y="200" font-size="35" >USING CLIPPATH IN</text>
-                            <text x= "0" y="250" font-size="35" >AN SVG</text>
+                            <text class="textSVG" x= "0" y="200" >USING CLIPPATH IN</text>
+                            <text class="textSVG" x= "0" y="250" >AN SVG</text>
                         </clippath>
                     </defs>
                     <image xlink:href = "img/reflective1.jpg" clip-path = "url(#my-path)" width = "100%"/>
                 </svg>
             </div>
             <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
         </section>
         <section>
             <div class="box1">
@@ -51,23 +76,21 @@
                             <image xlink:href = "img/linesMask2.png"  width = "110%" />
                         </mask>
                     </defs>
-                    <text x= "0" y= "200" font-size="35" fill="red" mask="url(#my-mask)" >USING MASK IN</text>
-                    <text x= "0" y= "250" font-size="35" fill="red" mask="url(#my-mask)" >AN SVG</text>
+                    <text class="textSVG" x= "0" y= "200"  fill="#ae7f4e" mask="url(#my-mask)" >USING MASK IN</text>
+                    <text class="textSVG" x= "0" y= "250"  fill="#ae7f4e" mask="url(#my-mask)" >AN SVG</text>
                 </svg>
             </div>
             <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
         </section>
         <section>
             <div class="box1">
                 <canvas id="canvas">Using HTML5 canvas</canvas>
             </div>
             <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
         </section>
-    </div>
-    <div class="animationsContainer">
-        <section>
+        <section class="animationsContainer">
             <h2>Some Animations</h2>
         </section>
     </div>
