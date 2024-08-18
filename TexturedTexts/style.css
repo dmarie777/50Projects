@@ -34,7 +34,7 @@ main {
 }
 
 text {
-    font-family: Panchang-Extrabold;
+    font-family: 'Panchang-Variable';
    
 }
 
@@ -105,8 +105,9 @@ p {
 }
 
 .backgroundClip {
-    background: linear-gradient(60deg, var(--dark-color2),var(--brown-color2), var(--brown-color), yellow, red);
+    background: linear-gradient(60deg, var(--dark-color2), var(--brown-color2), var(--brown-color), yellow, red);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
 }
 
