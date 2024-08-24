@@ -6,6 +6,10 @@
     padding: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 :root {
     --dark-color: #17201e;
     --dark-color2: #374d4b;
