@@ -1,4 +1,5 @@
 @import url('panchang.css');
+@import url('hoover.css');
 
 * {
     box-sizing: border-box;
@@ -44,7 +45,7 @@ body {
     min-width: 100vw;
 }
 
-h2 {
+.main__byline {
     color: grey;
 }
 
@@ -71,16 +72,49 @@ text {
     text-orientation: mixed;
     text-decoration: none;
     font-weight: 150;
-    font-size: 0.7rem;
+    font-size: clamp(0.5rem, 0.01rem + 2vw ,0.7rem);
     transform: rotate(180deg);
 }
 
 .intro-section__button {
+    --thikness: 2px;
+    --length: 10px;
+    --color: rgb(243, 243, 243);
+    font-size: clamp(0.8rem, 0.02rem + 2vw ,1.3rem);
+    text-transform: uppercase;
     position:absolute;
     bottom:40vh;
-    left: 50vw;
+    left: 40vw;
+    min-width: 15vw;
+    border-radius: 10px;
+    border: none;
+    background:
+    linear-gradient(var(--color), var(--color)) 0px 0px/var(--length) var(--thikness) no-repeat,   
+    linear-gradient(var(--color), var(--color)) 0px 0px/var(--thikness) var(--length) no-repeat, 
+
+    linear-gradient(var(--color), var(--color)) 0px 100%/var(--length) var(--thikness) no-repeat, 
+    linear-gradient(var(--color), var(--color)) 0px 100%/var(--thikness) var(--length)  no-repeat, 
+
+    linear-gradient(var(--color), var(--color)) 100% 0%/var(--length) var(--thikness) no-repeat,  
+    linear-gradient(var(--color), var(--color)) 100% 0%/var(--thikness) var(--length) no-repeat,  
+
+    linear-gradient(var(--color), var(--color)) 100% 100%/var(--length) var(--thikness) no-repeat,   
+    linear-gradient(var(--color), var(--color)) 100% 100%/var(--thikness) var(--length) no-repeat,   
+    var(--dark-color2);
+    
+    padding: 15px;
 }
 
+.intro-section__button a {
+    text-decoration: none;
+    color:rgba(255, 255, 255, 0.879);
+}
+
+.main__byline, .intro-section__button a {
+    font-family: 'Hoover-Variable';
+    font-weight: 400;
+    letter-spacing:0.2rem;
+}
 
 @supports (animation-timeline: scroll()) {
 
