@@ -7,7 +7,9 @@
 }
 
 body {
+    font-family: 'Panchang-Variable';
     overflow-x: hidden;
+    background: var(--dark-color);
 }
 
 :root {
@@ -22,29 +24,67 @@ body {
     --brown-color4: #c5c9a1;
 }
 
-section {
-    font-family: Panchang-Extrabold;
-    min-height: 100vh;
-    display: flex;
-    padding: 0 70px;
-    color: var(--grey-color2);
-
-}
-
-main {
+.main {
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    padding: 0 70px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
+.main__title {
+    font-family: 'Panchang-extrabold'; 
+}
+
+.main__title, .main__byline {
+    display:block;
+    min-width: 100vw;
+}
+
+h2 {
+    color: grey;
 }
 
 text {
     font-family: 'Panchang-Variable';
-   
 }
+
+.intro-section {
+    position: relative;
+}
+
+.intro-section__svgMain {
+    width: 100vw;
+}
+
+.intro-section__credits {
+    position: absolute;
+    bottom:50px;
+    left: 50px;
+}
+.intro-section__credits a {
+    color: white;
+    writing-mode:vertical-rl;
+    text-orientation: mixed;
+    text-decoration: none;
+    font-weight: 150;
+    font-size: 0.7rem;
+    transform: rotate(180deg);
+}
+
+.intro-section__button {
+    position:absolute;
+    bottom:40vh;
+    left: 50vw;
+}
+
 
 @supports (animation-timeline: scroll()) {
 
-    .transitionStart {
+    .intro-section {
         view-timeline-name: --transitionStart;
         z-index: 2;
         clip-path: ellipse(250% 200% at 50% 250%);
@@ -60,11 +100,8 @@ text {
     }
 }
 
-section {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-}
+
+/* Demo styles*/
 
 .texturedTexts {
     background: var(--dark-color);
@@ -80,15 +117,7 @@ section {
 svg {
     width: 40vw;
 }
-.svgMain {
-    width: 100vw;
-}
 
-main {
-    position: relative;
-    top: 0;
-    left: 0;
-}
 
 h1,h2 {
     text-transform: uppercase;

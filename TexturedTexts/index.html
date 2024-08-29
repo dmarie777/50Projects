@@ -8,10 +8,14 @@
 </head>
 <body>
     <!-- this project is a tutorial to learn cool techniques -->
-    <main>
-        <svg class="svgMain" id="mainSVG" width="100vw" height="200vh" viewBox="0 0 600 300" >
+     <main class="main">
+        <h1 class="main__title">TEXTURED TEXTS</h1>
+        <h2 class="main__byline">by Mariel</h2>
+     </main>
+    <section class="intro-section" >
+        <svg class="intro-section__svgMain" id="mainSVG" width="100vw" height="150vh" viewBox="0 0 650 300" >
             <filter id="conform" x="-50%" y="-150vh" width="100vw" height="200vh"> 
-                <feImage xlink:href="./img/mainBackground.webp" x="0" y="-150vh" width="100%" height="300vh" preserveAspectRatio="none"></feImage>
+                <feImage xlink:href="./img/mainBackground.webp" x="0" y="-70vh" width="120%" height="200vh" preserveAspectRatio="none"></feImage>
                 <!-- desaturate the image -->
                 <feColorMatrix type="saturate" values="0" result="IMAGE"></feColorMatrix>
                 <!-- decrease level of details -->
@@ -19,7 +23,7 @@
                 <!-- distort the text -->
                 <feDisplacementMap in="SourceGraphic" in2="MAP" scale="10" xChannelSelector="R" yChannelSelector="R" result="TEXTURED_TEXT"></feDisplacementMap>
                 <!-- add the image as a background behind the text again -->
-                <feImage xlink:href="./img/mainBackground.webp" x="0" y="-150vh" width="100%" height="300vh" preserveAspectRatio="none" result="BG"></feImage>
+                <feImage xlink:href="./img/mainBackground.webp" x="0" y="-70vh" width="120%" height="200vh" preserveAspectRatio="none" result="BG"></feImage>
                 <feColorMatrix in="TEXTURED_TEXT" result="TEXTURED_TEXT_2" type="matrix" values="1 0 0 0 0 
                        0 1 0 0 0 
                        0 0 1 0 0 
@@ -32,75 +36,15 @@
                     <feMergeNode in="BLENDED_TEXT"></feMergeNode>
                 </feMerge>
             </filter>
-            <text  dx="0" dy="0" x = "50%" y = "0vh" font-size="2em"  text-anchor="middle" font-weight="700" filter="url(#conform)" fill="660708"> 
-                TEXTURED TEXTS
-                <tspan x = "50%" dy="5em" font-size="0.5em" font-weight="350">Let's explore different</tspan>
-                <tspan x = "50%" dy="1.2em" font-size="0.5em" font-weight="350">techniques to create</tspan>
-                <tspan x = "50%" dy="1.2em" font-size="0.5em" font-weight="350">textured texts.</tspan>
+            <text  dx="0%" dy="0" x = "50%" y = "25vh" font-size="1.2em"  text-anchor="middle" font-weight="400" filter="url(#conform)" fill="660708"> 
+                Let's explore different
+                <tspan x = "50%" dy="1.2em" font-size="1em" font-weight="400">techniques to create</tspan>
+                <tspan x = "50%" dy="1.2em" font-size="1em" font-weight="400">textured texts.</tspan>
             </text>
-
         </svg>
-    </main>
-
-    <div class="texturedTexts transitionStart">
-        <section >
-            <div class="backgroundClip box1">
-                <h2>Using background-clip</h2>
-            </div>
-            <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veritatis ipsam quam nobis corporis maiores atque deser</p>
-            </div>
-        </section>
-        <section>
-            <div class="maskContainer box1">
-                <h2 class="mask">Using mask-image</h2>
-            </div>
-            <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
-        </section>
-        <section>
-            <div class="box1">
-                <svg  height="400">
-                    <title>Adding texture using SVG clipPath</title>
-                    <defs>
-                        <clippath id="my-path">
-                            <text class="textSVG" x= "0" y="200" >USING CLIPPATH IN</text>
-                            <text class="textSVG" x= "0" y="250" >AN SVG</text>
-                        </clippath>
-                    </defs>
-                    <image xlink:href = "img/reflective1.jpg" clip-path = "url(#my-path)" width = "100%"/>
-                </svg>
-            </div>
-            <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
-        </section>
-        <section>
-            <div class="box1">
-                <svg height="400" >
-                    <title>Adding texture using SVG MAsks</title>
-                    <defs>
-                        <mask id="my-mask">
-                            <image xlink:href = "img/linesMask2.png"  width = "110%" />
-                        </mask>
-                    </defs>
-                    <text class="textSVG" x= "0" y= "200"  fill="#ae7f4e" mask="url(#my-mask)" >USING MASK IN</text>
-                    <text class="textSVG" x= "0" y= "250"  fill="#ae7f4e" mask="url(#my-mask)" >AN SVG</text>
-                </svg>
-            </div>
-            <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
-        </section>
-        <section>
-            <div class="box1">
-                <canvas id="canvas">Using HTML5 canvas</canvas>
-            </div>
-            <div class="commentsContainer box2">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
-        </section>
-        <section class="animationsContainer">
-            <h2>Some Animations</h2>
-        </section>
-    </div>
+        <span class="intro-section__credits"><a href="https://www.freepik.com/free-photo/old-building-walls-grunge-stained-weathered-run-down-generative-ai_41074462.htm#fromView=search&page=1&position=39&uuid=a345ccf0-8269-4694-897a-5dec7564f84d">Image by vecstock on Freepik</a></span>
+        <button class="intro-section__button" ><a href="./static/demo.html">Start</a></button>
+    </section>   
     <script src="./main.js"></script>
 </body>
 </html>

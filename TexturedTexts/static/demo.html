@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="texturedTexts">
+
+        <section >
+            <div class="backgroundClip box1">
+                <h2>Using background-clip</h2>
+            </div>
+            <div class="commentsContainer box2">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veritatis ipsam quam nobis corporis maiores atque deser</p>
+            </div>
+        </section>
+        <section>
+            <div class="maskContainer box1">
+                <h2 class="mask">Using mask-image</h2>
+            </div>
+            <div class="commentsContainer box2">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
+        </section>
+        <section>
+            <div class="box1">
+                <svg  height="400">
+                    <title>Adding texture using SVG clipPath</title>
+                    <defs>
+                        <clippath id="my-path">
+                            <text class="textSVG" x= "0" y="200" >USING CLIPPATH IN</text>
+                            <text class="textSVG" x= "0" y="250" >AN SVG</text>
+                        </clippath>
+                    </defs>
+                    <image xlink:href = "img/reflective1.jpg" clip-path = "url(#my-path)" width = "100%"/>
+                </svg>
+            </div>
+            <div class="commentsContainer box2">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
+        </section>
+        <section>
+            <div class="box1">
+                <svg height="400" >
+                    <title>Adding texture using SVG MAsks</title>
+                    <defs>
+                        <mask id="my-mask">
+                            <image xlink:href = "img/linesMask2.png"  width = "110%" />
+                        </mask>
+                    </defs>
+                    <text class="textSVG" x= "0" y= "200"  fill="#ae7f4e" mask="url(#my-mask)" >USING MASK IN</text>
+                    <text class="textSVG" x= "0" y= "250"  fill="#ae7f4e" mask="url(#my-mask)" >AN SVG</text>
+                </svg>
+            </div>
+            <div class="commentsContainer box2">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
+        </section>
+        <section>
+            <div class="box1">
+                <canvas id="canvas">Using HTML5 canvas</canvas>
+            </div>
+            <div class="commentsContainer box2">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati, qui. Ullam veri</p>
+        </section>
+        <section class="animationsContainer">
+            <h2>Some Animations</h2>
+        </section>
+    </div>
+</body>
+</html>
