@@ -1,2 +1,33 @@
 /* In this project I'll write the selectors using the BEM methodology*/
 
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+.nav {
+    text-align: right;
+}
+
+.nav__link {
+    display: inline;
+}
+
+.nav__link a {
+    text-decoration: none;
+    color: rgb(154, 170, 165);
+}
+
+.quote {
+    text-align: right;
+    font-size: 2.5rem;
+    padding: 2rem 2rem 2rem 30vw;
+}
