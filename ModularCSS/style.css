@@ -1,4 +1,3 @@
-/* In this project I'll write the selectors using the BEM methodology*/
 
 * {
     box-sizing:border-box;
@@ -32,8 +31,6 @@ body {
 }
 
 .header__title {
-    font-family: "Mattone-Bold"; 
-    font-size: 4rem;
     -webkit-text-stroke: 1px rgb(103, 101, 101);
     color: transparent;
     padding: 20vh 0 0 0;
@@ -49,7 +46,7 @@ body {
 
 .nav__link {
     font-family: "Mattone-regular"; 
-    font-size: 2rem;
+    font-size: clamp(1rem, 0.25rem + 2vw,4rem);
     list-style: none;
 }
 
@@ -60,6 +57,25 @@ body {
 
 .quote {
     text-align: left;
-    font-size: 4rem;
-    padding: 0 15vw 2rem 4rem;
+    padding: 0 15vw 1rem 4rem;
+}
+
+.header__title, .quote {
+    font-size: clamp(1.5rem, 1rem + 3vw,3.8rem);
+}
+
+.button {
+    display: flex;
+    justify-content: space-around;
+}
+.button__arrow {
+    font-size: clamp(1.5rem, 1rem + 3vw,3rem);
+    border-radius: 50%;
+    padding: 10px 20px;
+    background: rgba(169, 183, 187, 0.263);
+    border: 1px solid rgba(149, 147, 147, 0.772);
+}
+
+.grid {
+    min-height: 100vh;
 }
