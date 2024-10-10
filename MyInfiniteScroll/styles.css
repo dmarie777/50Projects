@@ -2,17 +2,23 @@
 
 
 body {
+    overflow: hidden;
     font-family: "Cinzel", serif;
+
+}
+
+.main {
     display: flex;
     flex-direction: column;
     justify-content:center;
-    text-align: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 80vh;
+    min-width: 100vw;
+    z-index: 99;
 }
 
 .scroller {
-    max-width: 600px;
+    max-width: 100vw;
     font-size: 1.3rem;
 }
 
@@ -24,9 +30,6 @@ body {
     gap: 1rem;
 }
 
-.scroller:first-of-type {
-    border-bottom: 1px solid rgb(156, 152, 152);
-}
 
 .tag-list {
     list-style: none;
@@ -94,3 +97,48 @@ h2 {
     font-size: 4rem;
     width: 40%;
 }
+
+
+/* gallery */
+.gallery {
+    --width: 0px;
+    position: absolute;
+    top:40%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    z-index: 1;
+    min-height: 100vh;
+    opacity: 1; 
+}
+
+.gallery[data-direction= "left"] {
+    left:100%;
+    animation: growGallery 10s infinite ease-out;
+}
+.gallery[data-direction= "right"] {
+    left:-60%;
+    animation: growGallery 10s infinite ease-out;
+
+}
+
+.gallery__panel {
+    width:50%;
+    aspect-ratio: 1/2;
+    animation: growPanel 10s infinite ease-out;
+    background-size: cover;
+}
+
+@keyframes growGallery {
+    90% {
+        opacity:1;
+    }
+    
+    100% {
+        inset: 0;
+        left: 5%;
+        top: 10%;
+        width: 100vw;
+        opacity: 0;
+    }
+}
+
