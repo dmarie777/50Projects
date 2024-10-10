@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+
+body {
+    font-family: "Cinzel", serif;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.scroller {
+    max-width: 600px;
+    font-size: 1.3rem;
+}
+
+.scroller__inner {
+    padding-block: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scroller:first-of-type {
+    border-bottom: 1px solid rgb(156, 152, 152);
+}
+
+.tag-list {
+    list-style: none;
+}
+
+.scroller[data-animated="true"] {
+    width: 90%;
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+        90deg,
+        transparent 10%,
+        white 30%,
+        white 80%,
+        transparent
+    );
+    mask: linear-gradient(
+        90deg,
+        transparent 10%,
+        white 30%,
+        white 80%,
+        transparent
+    );
+    position:relative;
+}
+
+.scroller[data-animated="true"]
+.scroller__inner li {
+    --duration: 10s;
+    position: absolute;
+    width: 20px;
+}
+
+.scroller__inner[data-direction="left"] li {
+    left:100%;
+    animation: scrollLeft var(--duration) linear infinite;
+}
+
+.scroller__inner[data-direction="right"] li {
+    right:120%;
+    animation: scrollRight var(--duration) linear infinite;
+}
+
+@keyframes scrollLeft {
+    to {
+        left: -40%;
+    }
+}
+@keyframes scrollRight {
+    to {
+        right: -40%;
+    }
+}
+
+.scroller[data-animated="true"] .scroller__inner .item1 {
+    animation-delay:calc(var(--duration) / 3 * 1);
+}
+.scroller[data-animated="true"] .scroller__inner .item2 {
+    animation-delay:calc(var(--duration) / 3 * 2);
+}
+.scroller[data-animated="true"] .scroller__inner .item3 {
+    animation-delay:calc(var(--duration) / 3 * 3);
+}
+
+h2 {
+    font-size: 4rem;
+    width: 40%;
+}
