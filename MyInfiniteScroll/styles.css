@@ -65,10 +65,11 @@ body {
 .scroller__inner[data-direction="left"] li {
     left:100%;
     animation: scrollLeft var(--duration) linear infinite;
+
 }
 
 .scroller__inner[data-direction="right"] li {
-    right:120%;
+    right:100%;
     animation: scrollRight var(--duration) linear infinite;
 }
 
@@ -101,12 +102,11 @@ h2 {
 
 /* gallery */
 .gallery {
-    --width: 0px;
+    width: 50vw;
     position: absolute;
-    top:40%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    z-index: 1;
+    top:60vh;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 33.3%);
     min-height: 100vh;
     opacity: 1; 
 }
@@ -118,27 +118,54 @@ h2 {
 .gallery[data-direction= "right"] {
     left:-60%;
     animation: growGallery 10s infinite ease-out;
-
 }
 
 .gallery__panel {
     width:50%;
     aspect-ratio: 1/2;
-    animation: growPanel 10s infinite ease-out;
     background-size: cover;
 }
 
 @keyframes growGallery {
     90% {
         opacity:1;
+        background: transparent;
     }
-    
+
     100% {
         inset: 0;
-        left: 5%;
-        top: 10%;
+        left: 5vw;
+        top: 15vh;
         width: 100vw;
-        opacity: 0;
+        opacity: 0.8;
     }
 }
 
+.main::after {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    margin: 4vw 7vh 7vh 4vw;
+    content: '';
+    z-index: 99;
+    animation: transition 10s infinite ease-out;
+ 
+}
+@keyframes transition {
+    90% {
+        background: transparent;
+    }
+    98% {
+        background: repeating-linear-gradient(transparent 1%, rgb(253, 253, 253) 1.5%) 0px 0px;
+    }
+    
+    100% {
+        background: repeating-linear-gradient(transparent 1%, rgb(252, 252, 252) 1%, rgb(252, 252, 252) 1.5%) 0px 1000px;
+    }
+}
+
+@media (max-width: 910px) {
+    .gallery__panel {
+        width:90%;
+    }
+}
