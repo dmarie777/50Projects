@@ -1,43 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 
+:root {
+    --duration: 10s;
+}
+
 body {
     overflow: hidden;
     font-family: "Cinzel", serif;
-
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    min-height: 80vh;
-    min-width: 100vw;
-    z-index: 99;
-}
-
-.scroller {
-    max-width: 100vw;
-    font-size: 1.3rem;
-}
-
-.scroller__inner {
-    padding-block: 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-}
-
-
-.tag-list {
-    list-style: none;
-}
-
-.scroller[data-animated="true"] {
-    width: 90%;
-    overflow: hidden;
     -webkit-mask: linear-gradient(
         90deg,
         transparent 10%,
@@ -52,12 +22,44 @@ body {
         white 80%,
         transparent
     );
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    min-height: 80vh;
+    min-width: 100vw;
+    z-index: 99;
+}
+
+.tag-list {
+    list-style: none;
+}
+
+/* Infinite Scroll */
+.scroller {
+    max-width: 100vw;
+    font-size: 1.3rem;
+}
+
+.scroller__inner {
+    padding-block: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scroller[data-animated="true"] {
+    width: 80%;
+    overflow: hidden;
     position:relative;
 }
 
 .scroller[data-animated="true"]
 .scroller__inner li {
-    --duration: 10s;
     position: absolute;
     width: 20px;
 }
@@ -114,15 +116,22 @@ h2 {
 .gallery[data-direction= "left"] {
     left:100%;
     animation: growGallery 10s infinite ease-out;
+    animation-delay:calc(var(--duration) / 3 * 1);
+
+
 }
 .gallery[data-direction= "right"] {
-    left:-60%;
+    justify-items: end;
+    left:-40%;
     animation: growGallery 10s infinite ease-out;
+    animation-delay:calc(var(--duration) / 3 * 1);
+
 }
 
 .gallery__panel {
     width:50%;
     aspect-ratio: 1/2;
+    border-radius: 20%;
     background-size: cover;
 }
 
@@ -141,7 +150,9 @@ h2 {
     }
 }
 
+/* transition */
 .main::after {
+    --end: calc(var(--duration) + var(--duration) / 3 * 1); 
     position: absolute;
     inset: 0;
     width: 100vw;
@@ -149,9 +160,16 @@ h2 {
     content: '';
     z-index: 99;
     animation: transition 10s infinite ease-out;
- 
 }
+
 @keyframes transition {
+    0% {
+    opacity: 1;
+   }
+   
+    50% {
+        opacity: 0.5;
+    }
     90% {
         background: transparent;
     }
