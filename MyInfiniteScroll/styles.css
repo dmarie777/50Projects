@@ -115,7 +115,7 @@ h2 {
 
 .gallery[data-direction= "left"] {
     left:100%;
-    animation: growGallery 10s infinite ease-out;
+    animation: growGallery var(--duration) infinite ease-out;
     animation-delay:calc(var(--duration) / 3 * 1);
 
 
@@ -123,7 +123,7 @@ h2 {
 .gallery[data-direction= "right"] {
     justify-items: end;
     left:-40%;
-    animation: growGallery 10s infinite ease-out;
+    animation: growGallery var(--duration) infinite ease-out;
     animation-delay:calc(var(--duration) / 3 * 1);
 
 }
@@ -141,44 +141,45 @@ h2 {
         background: transparent;
     }
 
+    95% {
+        opacity: 0.8;
+    }
+
     100% {
         inset: 0;
         left: 5vw;
         top: 15vh;
         width: 100vw;
-        opacity: 0.8;
+        opacity: 0;
     }
 }
 
 /* transition */
 .main::after {
-    --end: calc(var(--duration) + var(--duration) / 3 * 1); 
     position: absolute;
     inset: 0;
     width: 100vw;
     margin: 4vw 7vh 7vh 4vw;
     content: '';
     z-index: 99;
-    animation: transition 10s infinite ease-out;
+    animation: transition var(--duration) ease-out infinite;
+    animation-delay: calc(var(--duration) / 3 * 1);
 }
 
 @keyframes transition {
-    0% {
-    opacity: 1;
-   }
-   
-    50% {
-        opacity: 0.5;
-    }
-    90% {
+
+    85% {
         background: transparent;
+        opacity: 0.8;
     }
+
     98% {
         background: repeating-linear-gradient(transparent 1%, rgb(253, 253, 253) 1.5%) 0px 0px;
     }
     
     100% {
         background: repeating-linear-gradient(transparent 1%, rgb(252, 252, 252) 1%, rgb(252, 252, 252) 1.5%) 0px 1000px;
+        opacity: 0;
     }
 }
 
