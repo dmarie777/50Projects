@@ -3,6 +3,7 @@
 
 :root {
     --duration: 7s;
+    --colorWhite: rgb(225 230 231 / 70%);
 }
 
 body {
@@ -183,8 +184,30 @@ h2 {
 }
 
 /* Arrow */
-.arrow {
+.arrowContainer{
+    width: 100vw;
+    height: 70px;
+
+    /* position */
+    position: absolute;
     z-index: 99;
+    top: 100%;
+    animation: showArrowContainer 5s ease-in-out forwards;
+    animation-delay: var(--duration);
+}
+
+
+@keyframes showArrowContainer {
+   0% {
+    opacity: 0;
+   } 
+   100% {
+    opacity: 1;
+    top: calc(100% - 70px);
+   }
+}
+
+.arrow {
     position: absolute;
     width: 70px;
     aspect-ratio: 1 / 1; 
@@ -200,17 +223,21 @@ h2 {
     transform: translate(-50%, -100%);
     animation: showArrow 5s ease-in-out forwards;
     animation-delay: var(--duration);
-    /* glassmorfism */
-    background: rgba(172, 178, 185, 0.29);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.45);
 }
-.fa-arrow-down {
+
+.fa-chevron-down {
     font-size: 2rem;
     z-index: 99;
+}
 
+.arrowContainer,
+.arrow {
+    /* glassmorfism */
+    background: var(--colorWhite);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 @keyframes showArrow {
@@ -220,31 +247,7 @@ h2 {
    100% {
     opacity: 1;
     top: calc(100% - 20px);
-
    }
-}
-
-.arrow::before {
-    position: absolute;
-    content: '';
-    inset: 0;
-    z-index: 0;
-    border-radius: 50%;
-    animation: linesTransition 2s ease-out infinite;
-    animation-delay: var(--duration);
-
-}
-
-
-@keyframes linesTransition {
-    0% {
-        background: repeating-linear-gradient(90deg,white 0px, white 0.05px, rgba(172, 178, 185, 0.29) 0.05px,rgba(172, 178, 185, 0.29) 0.07px ) 0px 0px;
-    }
-    
-    100% {
-        
-        background: repeating-linear-gradient(90deg,white 0px, white 0.05px, rgba(172, 178, 185, 0.29) 0.05px,rgba(172, 178, 185, 0.29) 0.07px ) 600vw 0px;
-    }
 }
 
 @media (max-width: 910px) {
