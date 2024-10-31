@@ -2,12 +2,14 @@
 
 
 :root {
-    --duration: 10s;
+    --duration: 7s;
 }
 
 body {
     overflow: hidden;
+    min-height: 100vh;
     font-family: "Cinzel", serif;
+    text-transform: uppercase;
     -webkit-mask: linear-gradient(
         90deg,
         transparent 10%,
@@ -29,7 +31,7 @@ body {
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 82vh;
     min-width: 100vw;
     z-index: 99;
 }
@@ -40,6 +42,7 @@ body {
 
 /* Infinite Scroll */
 .scroller {
+    color: grey;
     max-width: 100vw;
     font-size: 1.3rem;
 }
@@ -115,17 +118,14 @@ h2 {
 
 .gallery[data-direction= "left"] {
     left:100%;
-    animation: growGallery var(--duration) infinite ease-out;
+    animation: growGallery var(--duration) ease-out;
     animation-delay:calc(var(--duration) / 3 * 1);
-
-
 }
 .gallery[data-direction= "right"] {
     justify-items: end;
     left:-40%;
-    animation: growGallery var(--duration) infinite ease-out;
+    animation: growGallery var(--duration) ease-out;
     animation-delay:calc(var(--duration) / 3 * 1);
-
 }
 
 .gallery__panel {
@@ -162,12 +162,11 @@ h2 {
     margin: 4vw 7vh 7vh 4vw;
     content: '';
     z-index: 99;
-    animation: transition var(--duration) ease-out infinite;
+    animation: transition var(--duration) ease-out;
     animation-delay: calc(var(--duration) / 3 * 1);
 }
 
 @keyframes transition {
-
     85% {
         background: transparent;
         opacity: 0.8;
@@ -183,8 +182,74 @@ h2 {
     }
 }
 
+/* Arrow */
+.arrow {
+    z-index: 99;
+    position: absolute;
+    width: 70px;
+    aspect-ratio: 1 / 1; 
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: 100%;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    animation: showArrow 5s ease-in-out forwards;
+    animation-delay: var(--duration);
+    /* glassmorfism */
+    background: rgba(172, 178, 185, 0.29);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+}
+.fa-arrow-down {
+    font-size: 2rem;
+    z-index: 99;
+
+}
+
+@keyframes showArrow {
+   0% {
+    opacity: 0;
+   } 
+   100% {
+    opacity: 1;
+    top: calc(100% - 20px);
+
+   }
+}
+
+.arrow::before {
+    position: absolute;
+    content: '';
+    inset: 0;
+    z-index: 0;
+    border-radius: 50%;
+    animation: linesTransition 2s ease-out infinite;
+    animation-delay: var(--duration);
+
+}
+
+
+@keyframes linesTransition {
+    0% {
+        background: repeating-linear-gradient(90deg,white 0px, white 0.05px, rgba(172, 178, 185, 0.29) 0.05px,rgba(172, 178, 185, 0.29) 0.07px ) 0px 0px;
+    }
+    
+    100% {
+        
+        background: repeating-linear-gradient(90deg,white 0px, white 0.05px, rgba(172, 178, 185, 0.29) 0.05px,rgba(172, 178, 185, 0.29) 0.07px ) 600vw 0px;
+    }
+}
+
 @media (max-width: 910px) {
     .gallery__panel {
         width:90%;
     }
 }
+
