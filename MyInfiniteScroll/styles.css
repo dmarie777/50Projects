@@ -3,8 +3,15 @@
 
 
 :root {
-    --duration: 7s;
-    --colorWhite: rgb(225 230 231 / 70%);
+    --duration: 9s;
+    --colorWhite: rgba(237, 244, 245, 0.7);
+    --titleFont-size: 1.3rem;
+    --scrollerFont-size: calc(var(--titleFont-size) / 2);
+    --arrowFony-size: calc(var(--titleFont-size) / 2);
+}
+
+html {
+    font-size: calc(100vw / 1920 * 40)
 }
 
 body {
@@ -40,8 +47,7 @@ body {
 
 .main h2 {
     font-weight: 300;
-    font-size: 2.5rem;
-
+    font-size: var(--titleFont-size);
 }
 
 .tag-list {
@@ -51,11 +57,11 @@ body {
 /* Infinite Scroll */
 .scroller {
     color: grey;
-    max-width: 100vw;
-    font-size: 1.3rem;
+    min-width: 100vw;
+    font-size: var(--scrollerFont-size);
 }
 
-.scrolerList {
+.scrollerList {
     padding-block: 0.5rem;
     display: flex;
     flex-wrap: wrap;
@@ -70,18 +76,18 @@ body {
 }
 
 .scroller[data-animated="true"]
-.scrolerList li {
+.scrollerList li {
     position: absolute;
     width: 20px;
 }
 
-.scrolerList[data-direction="left"] li {
+ul.scrollerList[data-direction="left"] li {
     left:100%;
     animation: scrollLeft var(--duration) linear infinite;
 
 }
 
-.scrolerList[data-direction="right"] li {
+ul.scrollerList[data-direction="right"] li {
     right:100%;
     animation: scrollRight var(--duration) linear infinite;
 }
@@ -97,19 +103,14 @@ body {
     }
 }
 
-.scroller[data-animated="true"] .scroller__inner .item1 {
+.scroller[data-animated="true"] .scrollerList__item1 {
     animation-delay:calc(var(--duration) / 3 * 1);
 }
-.scroller[data-animated="true"] .scroller__inner .item2 {
+.scroller[data-animated="true"] .scrollerList__item2 {
     animation-delay:calc(var(--duration) / 3 * 2);
 }
-.scroller[data-animated="true"] .scroller__inner .item3 {
+.scroller[data-animated="true"] .scrollerList__item3 {
     animation-delay:calc(var(--duration) / 3 * 3);
-}
-
-h2 {
-    font-size: 4rem;
-    width: 40%;
 }
 
 
@@ -193,7 +194,7 @@ h2 {
 /* Arrow */
 .arrowContainer{
     width: 100vw;
-    height: 70px;
+    height: 120px;
 
     /* position */
     position: absolute;
@@ -210,15 +211,15 @@ h2 {
    } 
    100% {
     opacity: 1;
-    top: calc(100% - 70px);
+    top: calc(100% - 120px);
    }
 }
 
 .arrow {
     position: absolute;
     width: 70px;
-    aspect-ratio: 1 / 1; 
-    border-radius: 50%;
+    aspect-ratio: 2.5 / 1; 
+    border-radius: 20%;
 
     display: flex;
     align-items: center;
@@ -233,7 +234,7 @@ h2 {
 }
 
 .fa-chevron-down {
-    font-size: 2rem;
+    font-size: var(--arrowFony-size);
     z-index: 99;
 }
 
@@ -241,7 +242,7 @@ h2 {
 .arrow {
     /* glassmorfism */
     background: var(--colorWhite);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(131, 180, 232, 0.36);
     backdrop-filter: blur(60px);
     -webkit-backdrop-filter: blur(60px);
     border: 1px solid rgba(255, 255, 255, 0.45);
