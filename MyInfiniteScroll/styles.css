@@ -209,10 +209,17 @@ ul.scrollerList[data-direction="right"] li {
     position: absolute;
     z-index: 99;
     top: 100%;
+
+    /* glassmorfism */
+    background: var(--colorWhite);
+    box-shadow: 0 4px 20px rgba(131, 180, 232, 0.36);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
     animation: showArrowContainer 5s ease-in-out forwards;
     animation-delay: var(--duration);
 }
-
 
 @keyframes showArrowContainer {
    0% {
@@ -224,8 +231,15 @@ ul.scrollerList[data-direction="right"] li {
    }
 }
 
+.fa-chevron-down {
+    font-size: var(--arrowFont-size);
+    z-index: 99;
+}
+
 .arrow {
-    /* position: absolute; */
+    --border: 2px;
+
+    position: absolute;
     width: 70px;
     aspect-ratio: 2.5 / 1; 
     border-radius: 20%;
@@ -237,31 +251,9 @@ ul.scrollerList[data-direction="right"] li {
     top: 100%;
     opacity: 0;
     left: 50%;
-    transform: translate(-50%, -100%);
-    animation: showArrow 5s ease-in-out forwards;
-    animation-delay: var(--duration);
-}
-
-.fa-chevron-down {
-    font-size: var(--arrowFont-size);
-    z-index: 99;
-}
-
-.arrowContainer {
-    /* glassmorfism */
-    background: var(--colorWhite);
-    box-shadow: 0 4px 20px rgba(131, 180, 232, 0.36);
-    backdrop-filter: blur(60px);
-    -webkit-backdrop-filter: blur(60px);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-}
-
-.arrow {
-    --border: 2px;
+    
     box-shadow: 0 4px 20px rgba(131, 180, 232, 0.36);
     border: var(--border) solid transparent;
-    position: relative;
-    z-index: 99;
     background-image: linear-gradient(var(--color0), var(--color0)),
     linear-gradient(35deg, 
         var(--color1), 
@@ -274,6 +266,10 @@ ul.scrollerList[data-direction="right"] li {
     );
     background-origin: border-box;
     background-clip: padding-box, border-box;
+
+    transform: translate(-50%, -100%);
+    animation: showArrow 5s ease-in-out forwards;
+    animation-delay: var(--duration);
 }
 
 @keyframes showArrow {
