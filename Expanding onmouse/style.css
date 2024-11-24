@@ -3,6 +3,12 @@
     margin: 0;
 }
 
+.main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 .container {
     display: flex;
     width: 90vw;
@@ -27,8 +33,16 @@
     height: 90vh;
     border-radius: 50px;
     -webkit-transition: all 700ms ease-in;
-    transition: all 1000ms ease-in-out;
+    transition: all 1000ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .active:hover {
-    flex: 5;
+    flex: 1;
+}
+
+h3 {
+    text-align: center;
 }
