@@ -12,39 +12,46 @@ const end = Math.PI;
 const angles = Array.from({length: steps}, (_,i) => lerp(start, end, i / steps));
 let newAngle = []
 
+//functionality for the navbar
 navLinksArr.forEach(link => {
     link.onmouseover = function (event) {
         let target = event.target;
-        updateAngles(target);
-        assignNewRadius();
+        target.style.color = 'blue'
+
+        if (target.classList == 'nav__link') {  
+         
+            updateAngles(target);
+            assignNewRadius(target);
+        }
+
     }
+    link.addEventListener('mouseout', event => event.target.style.color = 'grey')
 })
 
 linksContainer.addEventListener('mouseleave', normalSizes)
 
 function normalSizes(event) {
-    console.log('out');
     
     navLinksArr.forEach((link,i) => {
-        link.style.width = diameter
-        link.style.height = diameter
+            link.style.width = diameter
+            link.style.height = diameter
 })
 
 }
 
 function updateAngles(target) {
-    const idTarget = Number(target.id);
-    const middleAngle = Math.floor(steps/2);
-    if (idTarget > middleAngle) {
-        newAngle = [...new Array(idTarget-middleAngle).fill(start), ...angles].slice(0,navLinksArr.length);
-    } else {
-        newAngle = [...angles, ...new Array(middleAngle-idTarget).fill(end)].slice(-navLinksArr.length); 
-    };
+        const idTarget = Number(target.id);
+        const middleAngle = Math.floor(steps/2);
+        if (idTarget > middleAngle) {
+            newAngle = [...new Array(idTarget-middleAngle).fill(start), ...angles].slice(0,navLinksArr.length);
+        } else {
+            newAngle = [...angles, ...new Array(middleAngle-idTarget).fill(end)].slice(-navLinksArr.length); 
+        };
 }
 
-function assignNewRadius() {
+function assignNewRadius(target) {
     navLinksArr.forEach((link,i) => {
-            const width = 40 * Math.sin(newAngle[i]) 
+            const width = 20 * Math.sin(newAngle[i]) 
             link.style.width = `calc(${diameter} + ${width}px)`
             link.style.height = `calc(${diameter} + ${width}px)`
     })
