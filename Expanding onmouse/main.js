@@ -7,31 +7,29 @@ const diameter = rootStyles.getPropertyValue('--diameter')
 //Functionality for the navbar
 linksContainer.addEventListener('mousemove', (event) => {
     const mouseY = event.clientY;
-    navLinksArr.forEach((button, index) => {
-        const rect = button.getBoundingClientRect();
-        const buttonCenterY = rect.top + rect.width / 2; 
+    navLinksArr.forEach((button) => {
+        const buttonBox = button.getBoundingClientRect();
+        const buttonCenterY = buttonBox.top + buttonBox.width / 2; 
         const distance = Math.abs(mouseY - buttonCenterY);
-        let newWidth = 0;
+        let newDiameter;
         if (distance > 200) {
-            newWidth = diameter;
+            newDiameter = parseInt(diameter);
         } else {
-            newWidth = 40 + Math.sin((1.75  - 0.0075 * distance)  ) * 40;
+            newDiameter = parseInt(diameter) + Math.sin(Math.PI / 2 * ( 1 - distance / 200)) * 40;
         }
-        button.style.width = `${newWidth}px`
-        button.style.height = `${newWidth}px`
+        button.style.width = `${newDiameter}px`
+        button.style.height = `${newDiameter}px`
     })
-
 })
 
 linksContainer.addEventListener('mouseleave', normalSizes)
 
 function normalSizes() { 
-    navLinksArr.forEach((link,i) => {
+    navLinksArr.forEach((link) => {
             link.style.width = diameter
             link.style.height = diameter
     })
 }
-
 
 //functionality for the panels///
 panels.forEach(panel => {
