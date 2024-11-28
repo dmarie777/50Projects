@@ -4,61 +4,32 @@ const linksContainer = document.querySelector('.navLinks')
 const rootStyles = getComputedStyle(document.documentElement)
 const diameter = rootStyles.getPropertyValue('--diameter')
 
-//Create an array with numbers from 0 to PI///
-//convert steps to an odd number
-const steps = navLinksArr.length % 2 !==0? navLinksArr.length : navLinksArr.length + 1;
-const start = 0;
-const end = Math.PI;
-const angles = Array.from({length: steps}, (_,i) => lerp(start, end, i / steps));
-let newAngle = []
-
-//functionality for the navbar
-navLinksArr.forEach(link => {
-    link.onmouseover = function (event) {
-        let target = event.target;
-        target.style.color = 'blue'
-
-        if (target.classList == 'nav__link') {  
-         
-            updateAngles(target);
-            assignNewRadius(target);
+//Functionality for the navbar
+linksContainer.addEventListener('mousemove', (event) => {
+    const mouseY = event.clientY;
+    navLinksArr.forEach((button, index) => {
+        const rect = button.getBoundingClientRect();
+        const buttonCenterY = rect.top + rect.width / 2; 
+        const distance = Math.abs(mouseY - buttonCenterY);
+        let newWidth = 0;
+        if (distance > 200) {
+            newWidth = diameter;
+        } else {
+            newWidth = 40 + Math.sin((1.75  - 0.0075 * distance)  ) * 40;
         }
+        button.style.width = `${newWidth}px`
+        button.style.height = `${newWidth}px`
+    })
 
-    }
-    link.addEventListener('mouseout', event => event.target.style.color = 'grey')
 })
 
 linksContainer.addEventListener('mouseleave', normalSizes)
 
-function normalSizes(event) {
-    
+function normalSizes() { 
     navLinksArr.forEach((link,i) => {
             link.style.width = diameter
             link.style.height = diameter
-})
-
-}
-
-function updateAngles(target) {
-        const idTarget = Number(target.id);
-        const middleAngle = Math.floor(steps/2);
-        if (idTarget > middleAngle) {
-            newAngle = [...new Array(idTarget-middleAngle).fill(start), ...angles].slice(0,navLinksArr.length);
-        } else {
-            newAngle = [...angles, ...new Array(middleAngle-idTarget).fill(end)].slice(-navLinksArr.length); 
-        };
-}
-
-function assignNewRadius(target) {
-    navLinksArr.forEach((link,i) => {
-            const width = 20 * Math.sin(newAngle[i]) 
-            link.style.width = `calc(${diameter} + ${width}px)`
-            link.style.height = `calc(${diameter} + ${width}px)`
     })
-}
-
-function lerp(a, b, t) {
-    return a + t * (b-a);
 }
 
 
