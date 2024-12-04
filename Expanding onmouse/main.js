@@ -1,8 +1,8 @@
 const panels = document.querySelectorAll('.panel')
 const navLinksArr = document.querySelectorAll('.nav__link')
-const linksContainer = document.querySelector('.navLinks')
+const linksContainer = document.querySelector('.nav')
 const rootStyles = getComputedStyle(document.documentElement)
-const diameter = rootStyles.getPropertyValue('--diameter')
+const diameterStr = rootStyles.getPropertyValue('--diameter')
 
 //Functionality for the navbar
 linksContainer.addEventListener('mousemove', (event) => {
@@ -13,9 +13,9 @@ linksContainer.addEventListener('mousemove', (event) => {
         const distance = Math.abs(mouseY - buttonCenterY);
         let newDiameter;
         if (distance > 200) {
-            newDiameter = parseInt(diameter);
+            newDiameter = parseInt(diameterStr);
         } else {
-            newDiameter = parseInt(diameter) + Math.sin(Math.PI / 2 * ( 1 - distance / 200)) * 40;
+            newDiameter = parseInt(diameterStr) + Math.sin(Math.PI / 2 * ( 1 - distance / 200)) * 30;
         }
         button.style.width = `${newDiameter}px`
         button.style.height = `${newDiameter}px`
@@ -26,8 +26,8 @@ linksContainer.addEventListener('mouseleave', normalSizes)
 
 function normalSizes() { 
     navLinksArr.forEach((link) => {
-            link.style.width = diameter
-            link.style.height = diameter
+            link.style.width = diameterStr
+            link.style.height = diameterStr
     })
 }
 
@@ -40,7 +40,10 @@ panels.forEach(panel => {
             target.classList.add('active')
         }
     }
+    panel.addEventListener('mouseleave', removeActive)
+
 })
+
 
 function removeActive() {
      panels.forEach(panel => {
