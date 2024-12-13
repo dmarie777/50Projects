@@ -11,9 +11,8 @@
 </head>
 <body>
     <!-- In this project I use the BEM methodology for the classes -->
-    <main>
+    <main class="main">
         <header class="header">
-            <a class="header__title">My Gallery</a>
             <nav class="nav">
                 <ul>
                     <li class="nav__link nav__link-active"><a href="#">sketches</a></li>
@@ -22,45 +21,37 @@
             </nav>
         </header>
         <section class="quote">
-            <p>We are the music makers,</p>
-            <p>and we are the dreamers of dreams</p>
+            <div class="quote__mask"></div>
+            <a class="quote__title">Red Art</a>
+            <p class="quote__text">We are the music makers,</p>
+            <p class="quote__text">and we are the dreamers</p>
+            <p class="quote__text">of dreams</p>
         </section>
         <div class="button">
             <button class="button__arrow"><i class="fa-solid fa-arrow-down"></i></button>
         </div>
     </main>
 
-
     <section class="grid">
         <section class="project-prev proj-prev--selected">
-            <div class="project-prev__image"></div>
-            <div class="project-prev__heading"></div>
-            <div class="project-prev__byline"></div>
+            <div class="project-prev__info">
+                <div class="project-prev__description">On this website, we reimagine and rework captivating generative art from Open Processing</div>
+                <div class="project-prev__number"></div>
+            </div>
+            <div class="project-prev__image" style="background-image: url(https://images.unsplash.com/photo-1729862922759-21a44271fa25?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+                <div class="project-prev__credits">
+                    <div>Photo by <a href="https://unsplash.com/@nikita_pishchugin?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nikita Pishchugin</a> on <a href="https://unsplash.com/photos/a-red-flower-is-growing-on-a-branch-2v6OhVfC42E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></div>
+                </div>
+            </div>
         </section>
         <section class="project-prev">
-            <div class="project-prev__image"></div>
-            <div class="project-prev__heading"></div>
-            <div class="project-prev__byline"></div>
-        </section>
-        <section class="project-prev">
-            <div class="project-prev__image"></div>
-            <div class="project-prev__heading"></div>
-            <div class="project-prev__byline"></div>
-        </section>
-        <section class="project-prev">
-            <div class="project-prev__image"></div>
-            <div class="project-prev__heading"></div>
-            <div class="project-prev__byline"></div>
-        </section>
-        <section class="project-prev">
-            <div class="project-prev__image"></div>
-            <div class="project-prev__heading"></div>
-            <div class="project-prev__byline"></div>
-        </section>
-        <section class="project-prev">
-            <div class="project-prev__image"></div>
-            <div class="project-prev__heading"></div>
-            <div class="project-prev__byline"></div>
+            <div class="project-prev__info">
+                <div class="project-prev__description"></div>
+                <div class="project-prev__number"></div>
+            </div>
+            <div class="project-prev__image">
+                <div class="project-prev__credits"></div>
+            </div>
         </section>
     </section>
     <script src="./main.js"></script>
