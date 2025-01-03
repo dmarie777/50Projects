@@ -8,16 +8,17 @@
     --col: 15;
     --x: 50;
     --y: 50;
+    --background: rgb(27, 27, 27);
 }
 body {
     overflow: hidden;
-    background: 
+    /* background:  */
     /* top layer */
-    linear-gradient(
-        rgb(27, 27, 27),
-        rgb(27, 27, 27)
+    /* linear-gradient(
+        var(--background),
+        var(--background)
 
-    ) no-repeat;
+    ) no-repeat; */
 }
 
 .container {
@@ -28,9 +29,10 @@ body {
     max-height: 100vh;
     grid-template-columns: repeat(var(--col), 1fr);
     overflow: hidden;
-    z-index: 2;
+    z-index: 0;
+            /* light */
     background: 
-        /* light */
+
         radial-gradient(
             150px 150px at calc(var(--x) * 1px) calc(var(--y) * 1px),
             hsl(var(--x) 80% 80%) 0%,
@@ -40,12 +42,18 @@ body {
 }
 .grid {
     aspect-ratio: 1;
+
     border: 1px solid transparent;
     position: relative;
-    background: transparent;
-    background: 
+    /* background: transparent; */
+    /* background: 
     linear-gradient(
-        rgb(27, 27, 27),
-        rgb(27, 27, 27)
-    ) no-repeat padding-box;
+        var(--background),
+        var(--background)
+    ) no-repeat padding-box; */
 }
+
+.dg { 
+    position: absolute; 
+    z-index: 1000; 
+ }
