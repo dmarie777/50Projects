@@ -9,7 +9,9 @@
     --x: 50;
     --y: 50;
     --background: rgb(27, 27, 27);
+    --height: 60px;
 }
+
 body {
     overflow: hidden;
     /* background:  */
@@ -28,6 +30,7 @@ body {
     display: grid;
     max-height: 100vh;
     grid-template-columns: repeat(var(--col), 1fr);
+    /* grid-auto-rows: minmax(var(--height), auto);  */
     overflow: hidden;
     z-index: 0;
             /* light */
@@ -41,7 +44,7 @@ body {
         )  no-repeat fixed;
 }
 .grid {
-    aspect-ratio: 1;
+    /* aspect-ratio: 1; */
 
     border: 1px solid transparent;
     position: relative;
