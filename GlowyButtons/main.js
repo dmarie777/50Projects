@@ -10,7 +10,7 @@ const params = {
     numCol: 0, 
     height: '10px', 
     darkBack: `linear-gradient(rgb(27, 27, 27),rgb(27, 27, 27) ) no-repeat padding-box`,
-    lightBack: 'linear-gradient(rgb(245, 247, 250),rgb(245, 247, 250) ) no-repeat padding-box',
+    lightBack: 'linear-gradient(rgb(245, 248, 250),rgb(245, 248, 250) ) no-repeat padding-box',
     selectedBackground:`linear-gradient(rgb(27, 27, 27),rgb(27, 27, 27) ) no-repeat padding-box`,
 };
 

@@ -1,9 +1,12 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Sigmar+One&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 *,
 *::after,
 *::before {
     box-sizing: border-box;
     margin: 0;
 }
+
 :root {
     --col: 15;
     --x: 50;
@@ -19,8 +22,105 @@ body {
     /* linear-gradient(
         var(--background),
         var(--background)
-
     ) no-repeat; */
+}
+
+.mainSection {
+    position: absolute;
+    display: flex;
+    min-width: 100vw;
+    min-height: 100vh;
+    color: white;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+    z-index: 1;
+    font-family: "Electrolize", serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    padding: 4rem 4rem;
+    
+}
+
+h1 {
+    background: linear-gradient(
+        rgb(255, 255, 255),
+        rgb(146, 143, 173)
+        );
+    color: transparent;
+    text-shadow: 
+    0 0 40px #073371;
+    background-clip: text;
+    font-weight: 300;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+}
+
+.buttons__brokenCorner { 
+    width: 10rem;
+    font-family: "Electrolize", serif;
+    letter-spacing: 0.4rem;
+    z-index: 0;
+    background: transparent;
+
+    display: inline-block; 
+    padding: 5px 10px; 
+    font-size: 1rem; 
+    color: #fff; 
+    backdrop-filter: blur(5px); /* Glass-like blur effect */ 
+    border: 1px solid rgba(241, 253, 252, 0.861); 
+    border-radius: 5px; 
+    text-align: center; 
+    cursor: pointer; 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 85% 90%, 70% 100%, 0 100%);
+    overflow: hidden; 
+} 
+
+button span {
+    border: 4px solid transparent;
+    inset: 2;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    position: relative;
+    text-transform: uppercase;
+}
+
+button:hover {
+    border: 1px solid transparent;
+    z-index: 0;
+    background: 
+        linear-gradient(
+            var(--background),
+            var(--background)
+        ) no-repeat padding-box,
+        radial-gradient(
+            50px 50px at center,
+            hsl(var(--x) 80% 80%) 20%,
+            hsl(var(--x) 80% 20%) 100%,
+            transparent 100%
+        ) ;
+}
+
+button span:hover{
+    width: 100%;
+    z-index: 1000;
+    height: 100%;
+    border: 1px solid transparent;
+    background: 
+    radial-gradient(
+        50px 50px at center,
+        hsl(var(--x) 80% 80%) 20%,
+        hsl(var(--x) 80% 20%) 100%,
+        transparent 100%
+    );
+    background-clip: text;
+    color: transparent;
 }
 
 .container {
@@ -30,10 +130,9 @@ body {
     display: grid;
     max-height: 100vh;
     grid-template-columns: repeat(var(--col), 1fr);
-    /* grid-auto-rows: minmax(var(--height), auto);  */
     overflow: hidden;
     z-index: 0;
-            /* light */
+    /* light */
     background: 
 
         radial-gradient(
@@ -44,11 +143,9 @@ body {
         )  no-repeat fixed;
 }
 .grid {
-    /* aspect-ratio: 1; */
 
     border: 1px solid transparent;
     position: relative;
-    /* background: transparent; */
     /* background: 
     linear-gradient(
         var(--background),
