@@ -1,5 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Sigmar+One&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
 *,
 *::after,
 *::before {
@@ -8,14 +8,16 @@
 }
 
 :root {
-    --col: 15;
+    --col: 18;
     --x: 50;
     --y: 50;
     --background: rgb(27, 27, 27);
-    --height: 60px;
+    --mainColor: #FFB703;
+    --height: 70px;
 }
 
 body {
+    position: relative;
     overflow: hidden;
     /* background:  */
     /* top layer */
@@ -31,49 +33,81 @@ body {
     min-width: 100vw;
     min-height: 100vh;
     color: white;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-end;
     flex-direction: column;
-    gap: 3rem;
     z-index: 1;
     font-family: "Electrolize", serif;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    padding: 4rem 4rem;
-    
+    font-size: 1.5rem;
 }
 
-h1 {
+.mainSection__svg {
+    position: absolute;
+    width: 100vw;
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    height: 100%;
+}
+
+.svgLines { 
+    width: 80vw; 
+    height: auto; 
+}
+
+.mainSection__title {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.mainSection__title h1 {
     background: linear-gradient(
         rgb(255, 255, 255),
-        rgb(146, 143, 173)
-        );
+        rgb(255, 255, 255)
+    );
     color: transparent;
     text-shadow: 
     0 0 40px #073371;
     background-clip: text;
-    font-weight: 300;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 80vw;
+    margin: 2rem 0;
+    z-index: 1;
 }
 
-.buttons {
+.mainSection__title span:hover {
+    animation: shake 0.5s infinite;
+}
+
+.mainSection__buttons {
+    width: 100vw;
     display: flex;
-    justify-content: space-around;
-    gap: 5rem;
+    justify-content: flex-end;
+}
+
+.buttonsContainer {
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;    
+    gap: 8vw;
+    padding-right: 5rem;
+    padding-bottom: 5rem;
 }
 
 .buttons__brokenCorner { 
-    width: 10rem;
-    font-family: "Electrolize", serif;
+    min-width: calc(var(--height) * 2);
+    font-family: Helvetica, sans-serif, Arial;
     letter-spacing: 0.4rem;
     z-index: 0;
     background: transparent;
-
-    display: inline-block; 
-    padding: 5px 10px; 
-    font-size: 1rem; 
-    color: #fff; 
-    backdrop-filter: blur(5px); /* Glass-like blur effect */ 
-    border: 1px solid rgba(241, 253, 252, 0.861); 
+    padding: 10px 10px; 
+    font-size: 0.9rem; 
+    font-weight: 300;
+    color: #d8d9db; 
+    backdrop-filter: blur(5px); 
+    border: 1px solid rgba(221, 223, 222, 0.861); 
     border-radius: 5px; 
     text-align: center; 
     cursor: pointer; 
@@ -82,13 +116,12 @@ h1 {
 } 
 
 button span {
-    border: 4px solid transparent;
+    border: 1px solid transparent;
     inset: 2;
     height: 100%;
     width: 100%;
     z-index: 0;
     position: relative;
-    text-transform: uppercase;
 }
 
 button:hover {
@@ -105,6 +138,7 @@ button:hover {
             hsl(var(--x) 80% 20%) 100%,
             transparent 100%
         ) ;
+        animation: shake 0.5s infinite;
 }
 
 button span:hover{
@@ -123,6 +157,31 @@ button span:hover{
     color: transparent;
 }
 
+@keyframes shake {
+    0% { 
+        transform: translateX(0);
+        text-shadow: 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent;
+     } 
+    25% { 
+        transform: translateX(-1px); 
+        text-shadow: 0 0 0 transparent, 0 0 0 transparent, 2px 0 0 var(--mainColor); 
+
+    } 
+    50% { 
+        transform: translateX(1px); 
+        text-shadow: 0 0 0 transparent, 2px 0 0 var(--mainColor), 0 0 0 transparent;
+    } 
+    75% { 
+        transform: translateX(-1px); 
+    } 
+    100% {
+        transform: translateX(0);
+        text-shadow: 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent;
+    } 
+} 
+    
+
+
 .container {
     position: relative;
     height: 100vh;
@@ -134,16 +193,15 @@ button span:hover{
     z-index: 0;
     /* light */
     background: 
-
         radial-gradient(
             150px 150px at calc(var(--x) * 1px) calc(var(--y) * 1px),
-            hsl(var(--x) 80% 80%) 0%,
-            hsl(var(--x) 80% 20%) 15%,
+            hsl(43 var(--x) 80%) 0%,
+            hsl(43 calc(sin(var(--x)) * 50) 15%),
             transparent 100%
         )  no-repeat fixed;
 }
-.grid {
 
+.grid {
     border: 1px solid transparent;
     position: relative;
     /* background: 
@@ -153,7 +211,7 @@ button span:hover{
     ) no-repeat padding-box; */
 }
 
-.dg { 
+/* .dg { 
     position: absolute; 
-    z-index: 1000; 
- }
+    z-index: 9999; 
+ } */

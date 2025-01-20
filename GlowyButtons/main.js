@@ -46,33 +46,37 @@ class Grid {
             cell.style.background = params.selectedBackground;
         })
     }
+
+    lightEffect({x: pointerX, y: pointerY}) {
+        document.documentElement.style.setProperty('--x', pointerX.toFixed(2));
+        document.documentElement.style.setProperty('--y', pointerY.toFixed(2));
+    }
 }
 
 const grid = new Grid();
 grid.createGrid();
 grid.addBackground();
+document.addEventListener('pointermove', grid.lightEffect);
+
+
+//Light effect in svg
+// ...
 
 
 
-//Light effect
-function syncPosition({x: pointerX, y: pointerY}) {
-    document.documentElement.style.setProperty('--x', pointerX.toFixed(2));
-    document.documentElement.style.setProperty('--y', pointerY.toFixed(2));
-}
-document.addEventListener('pointermove', syncPosition);
 
 //Dat-gui options
-gui.add(params, 'numCol', 1, 50).step(1).onChange(function(val) {
-    root.style.setProperty('--col', val);
-    grid.updateGrid(val);
-    grid.addBackground();
-});
+// gui.add(params, 'numCol', 1, 50).step(1).onChange(function(val) {
+//     root.style.setProperty('--col', val);
+//     grid.updateGrid(val);
+//     grid.addBackground();
+// });
 
-gui.add(params, 'selectedBackground',['lightBack', 'darkBack']).name('Background Style').onChange(function(value) {
-    params.selectedBackground = params[value];   
-    grid.gridArr.forEach(grid => {
-        grid.style.background = params[value];
-    })
-    document.body.style.background = params[value];
-});
+// gui.add(params, 'selectedBackground',['lightBack', 'darkBack']).name('Background Style').onChange(function(value) {
+//     params.selectedBackground = params[value];   
+//     grid.gridArr.forEach(grid => {
+//         grid.style.background = params[value];
+//     })
+//     document.body.style.background = params[value];
+// });
 
