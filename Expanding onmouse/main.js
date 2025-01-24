@@ -1,4 +1,6 @@
 const panels = document.querySelectorAll('.panel')
+const panelsImg = document.querySelectorAll('.panel__img')
+
 const navLinksArr = document.querySelectorAll('.nav__link')
 const linksContainer = document.querySelector('.nav')
 const rootStyles = getComputedStyle(document.documentElement)
@@ -32,12 +34,13 @@ function normalSizes() {
 }
 
 //functionality for the panels///
-panels.forEach(panel => {
+panelsImg.forEach((panel, i) => {
     panel.onmouseover = function (event) {
         let target = event.target;
         if (target.tagName === 'DIV') {
             removeActive()
             target.classList.add('active')
+            panels[i].classList.add('active')
         }
     }
     panel.addEventListener('mouseleave', removeActive)
