@@ -7,6 +7,14 @@
 }
 :root {
     --diameter: 40px;
+    --white: white;
+    --red: rgba(159, 0, 0, 0.89);
+    --green: rgba(2, 129, 2, 0.893);
+    --blue: rgb(25, 82, 180);
+    --skyblue: rgb(24, 209, 255);
+    --yellow: rgb(244, 212, 32);
+    --grey: rgba(170, 170, 170, 0.9);
+    --color:rgba(170, 170, 170, 0.9);
 }
 
 .kanit-regular {
@@ -14,7 +22,7 @@
     font-weight: 400;
     font-style: normal;
   }
-  
+
 
 .menu {
     display: flex;
@@ -34,7 +42,7 @@
     font-size: 0.9rem;
     z-index: 9999;
     padding: 0 5px;
-    border-right: 1px solid lightgrey;
+    border-right: 2px solid var(--color);
 }
 
 
@@ -47,21 +55,63 @@
     border-radius: 50%;
     background: rgba(235, 230, 230, 0.50);
     line-height: var(--diameter);
-
+    transition: all 100ms ease;
     position: relative;
 }
 
 .nav__link:hover:before {
-    content: 'hello';
     position: absolute;
     letter-spacing: 0.3cap;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
     right: 100%;
     color:rgb(143, 138, 149);
     width:80%;
     height: 1.2rem;
     margin:0;
-    padding:0;
+    padding:2px;
+    background: white;
+    z-index: 999;
 }
+
+.nav__link:nth-child(1):hover:before {
+    content: "red";
+}
+.nav__link:nth-child(2):hover:before {
+    content: "green";
+}
+.nav__link:nth-child(3):hover:before {
+    content: "blue";
+}
+.nav__link:nth-child(4):hover:before {
+    content: "skyblue";
+    right: 120%;
+}
+.nav__link:nth-child(5):hover:before {
+    content: "yellow";
+}
+.nav__link:nth-child(6):hover:before {
+    content: "clear";
+}
+
+
+.nav__link:nth-child(1):hover i {
+    color: var(--red);
+}
+.nav__link:nth-child(2):hover i {
+    color: var(--green);
+}
+.nav__link:nth-child(3):hover i {
+    color: var(--blue);
+}
+.nav__link:nth-child(4):hover i {
+    color: var(--skyblue);
+}
+.nav__link:nth-child(5):hover i {
+    color: var(--yellow);
+}
+
 
 .fa-solid {
     color: rgb(157, 157, 157);
@@ -69,13 +119,9 @@
 
 .nav__link:hover {
     cursor: pointer;
-    border: 0.3px solid rgb(255, 255, 255);
-
 }
 
-.nav__link:hover .fa-solid {
-    color: rgb(30, 151, 198);
-}
+
 
 .main {
     min-height: 100vh;
@@ -86,7 +132,7 @@
 
 .container {
     display: flex;
-    width: 85vw;
+    width: 80vw;
     overflow: hidden;
     gap: 20px;
 
@@ -112,7 +158,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50px;
-    border: 1px solid rgb(144, 143, 143);
+    border: 1px solid var(--color);
     background-blend-mode: screen;
     background-position: center;
     background-size: cover;
@@ -121,13 +167,19 @@
     -webkit-mask: linear-gradient(
         90deg,
         transparent,
-        white 50%,
+       white 50%,
       );
       mask: linear-gradient(90deg, transparent, white 50% )
 }
 
 
 .panel__img:hover {
+    -webkit-mask: linear-gradient(
+        90deg,
+        white,
+       white 50%,
+      );
+      mask: linear-gradient(90deg, white, white 50% );
     background-blend-mode: normal;
 
 }
@@ -138,13 +190,13 @@
 
 h3 {
     display: flex;
-    color:black; 
-    letter-spacing: 0.3cap;
-    font-size: 1rem;
+    color:black;
+    letter-spacing: 0.2cap;
+    font-size: 0.9rem;
     font-weight: 350;
     opacity:0;
     animation: appear 5s ease forwards;
-    z-index: 9999;
+    z-index: 9;
 }
 
 .panel__text {
@@ -168,54 +220,3 @@ h3 {
     flex-wrap: nowrap;
 }
 
-.divider {
-    position: absolute;
-    width: 30px;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.divider__span {
-    --width: 30px;
-    --back-color: rgb(241, 240, 240);
-    --shadow-color: rgb(228, 223, 223);
-    background: 
-        linear-gradient(
-            45deg,
-            var(--back-color) 47%,
-            var(--shadow-color) 47% 50%,
-            transparent 50%
-        ) 0 0/var(--width) var(--width) no-repeat,
-        linear-gradient(
-            135deg,
-            var(--back-color) 47%,
-            var(--shadow-color) 47% 50%,
-            transparent 50%
-        ) 0 calc(100%)/var(--width) var(--width) no-repeat,
-        linear-gradient(
-            90deg,
-            var(--back-color) 97%,
-            var(--shadow-color) 97% 100%
-        ) 0 var(--width)/100% calc(100% - calc(var(--width) * 2)) no-repeat;
-    height: 80vh;
-    width: 100%;
-    z-index: 9;
-    color: grey;
-    font-family: Helvetica, sans-serif, Arial;
-    letter-spacing: 0.25rem;
-    font-size: 0.6rem;
-    vertical-align: auto;
-    writing-mode: vertical-lr;
-    text-orientation:sideways;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.divider a {
-    color: grey;
-    text-decoration: none;
-
-}
