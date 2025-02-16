@@ -8,11 +8,46 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <nav class="nav">
+            <div class="nav__logo">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <a class="nav__link" href="#">About</a>
+        </nav>
+    </header>
     <main class="mainSection">
         <div class="mainSection__svg">
-                <svg class="svgLines" width="1400" height="577" viewBox="0 0 1400 577" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 103.5V93.5H895.5V0.5H905.5V93.5H995.5V29.5H1005.5V93.5H1052.5V103.5H1005.5V194H1095V160.5H1105.5V194L1155.5 194.5V204.5H1105.5V393.5H1249.5V403.5H1105.5V493.5H1399.5V503.5H1105.5V576.5H1095.5V503.5H1005.5V552.5H995.5C996.3 552.5 995.833 519.833 995.5 503.5H866.5V493.5H895.5V403.5H747.5V393.5H895.5V304L801.5 303.5V293.5C801.5 293.5 864.5 293.667 895.5 293.5V204.5H646.5V194.5H895.5V104L1 103.5ZM905.5 103.5V194.5C935.159 194.337 993.625 194.11 995.463 194.474C995.475 194.498 995.487 194.506 995.5 194.5C995.518 194.491 995.505 194.483 995.463 194.474C994.715 193.005 995.172 133.524 995.5 103.5H905.5ZM905.5 204.5H995.5V293.5H905.5V204.5ZM905.5 303.5V393.5H995.5V303.5H905.5ZM905.5 493.5V403.5H995.5V493.5H905.5ZM1095.5 493.5H1005.5V403.5H1095.5V493.5ZM1005.5 393.5V303.5H1062.5V293.5H1005.5V204.5H1095.5V393.5H1005.5Z" fill="#FFB703"/>
-                    </svg>         
+            <svg class="svgLines" width="1401" height="578" viewBox="0 0 1401 578" xmlns="http://www.w3.org/2000/svg">
+                <!-- Define a mask -->
+                <defs>
+                    <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                        <stop offset="70%" style="stop-color:#FFB703;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#FFB703;stop-opacity:0.3" />
+                    </radialGradient>
+                  <mask id="lightMask">
+                    <!-- The entire area is black (hidden) by default -->
+                    <rect width="100%" height="100%" fill="black" />
+                    <!-- The circle acts as the light source (white = visible) -->
+                    <circle id="lightCircle" cx="0" cy="0" r="150" fill="white" />
+                  </mask>
+                </defs>
+              
+                <!-- Draw the original path -->
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1 102.5V97.5H895.82V1H900.822V97.5H1000.86V30H1005.86V97.5H1052.88V102.5H1005.86V198.107H1100.5V161H1105.89V198.107H1155.91V203.5H1105.89V398H1249.95V402.5H1105.89V497.5H1400V502.5H1105.89V577H1100.89V502.5H1005.86V553H1000.86V502.5H866.809V497.5H895.82V404H747.767V399.5H895.82V302H801.786V297.5C801.786 297.5 864.809 297.667 895.82 297.5V205H646.731V200H895.82V102.5H1ZM900.5 198.5V102H1000.5C1000.16 132.5 1000.5 198.5 1000.5 198.5C1000.5 198.5 931.472 198.333 900.5 198.5ZM900.5 203H1000.5V297.5H900.5V203ZM900.5 302V398H1000.5V302H900.5ZM900.5 497V402H1000.5L1000 497H900.5ZM1100 497H1005.5V402H1100V497ZM1005.5 398V302H1066.31V297.5H1005.5V203H1100V398H1005.5Z" fill="rgba(0, 0, 0, 20)" />
+              
+                <!-- Add the color that will be revealed by the mask -->
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1 102.5V97.5H895.82V1H900.822V97.5H1000.86V30H1005.86V97.5H1052.88V102.5H1005.86V198.107H1100.5V161H1105.89V198.107H1155.91V203.5H1105.89V398H1249.95V402.5H1105.89V497.5H1400V502.5H1105.89V577H1100.89V502.5H1005.86V553H1000.86V502.5H866.809V497.5H895.82V404H747.767V399.5H895.82V302H801.786V297.5C801.786 297.5 864.809 297.667 895.82 297.5V205H646.731V200H895.82V102.5H1ZM900.5 198.5V102H1000.5C1000.16 132.5 1000.5 198.5 1000.5 198.5C1000.5 198.5 931.472 198.333 900.5 198.5ZM900.5 203H1000.5V297.5H900.5V203ZM900.5 302V398H1000.5V302H900.5ZM900.5 497V402H1000.5L1000 497H900.5ZM1100 497H1005.5V402H1100V497ZM1005.5 398V302H1066.31V297.5H1005.5V203H1100V398H1005.5Z" fill="url(#grad1)" mask="url(#lightMask)" />
+              </svg>
         </div>
         <div class="mainSection__title">
             <h1 aria-label="grid">
@@ -39,3 +74,4 @@
     <script src="./main.js"></script>
 </body>
 </html>
+<!-- Sound Effect by <a href="https://pixabay.com/users/estudiocoati-44388429/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=218128">Agustín Gutiérrez</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=218128">Pixabay</a> -->

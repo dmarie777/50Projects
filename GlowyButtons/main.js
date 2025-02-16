@@ -1,10 +1,11 @@
 const root = document.querySelector(':root');
 const container = document.querySelector('.container');
+const logoCells = document.querySelectorAll(".square")
 const rootStyles = getComputedStyle(root);
 const windowHeight = window.innerHeight;
 const windowWidth = window.innerWidth;
 
-//dat.GUI instance 
+//// dat.GUI instance 
 const gui = new dat.GUI(); 
 const params = { 
     numCol: 0, 
@@ -14,12 +15,13 @@ const params = {
     selectedBackground:`linear-gradient(rgb(27, 27, 27),rgb(27, 27, 27) ) no-repeat padding-box`,
 };
 
+/// Effect in background
 class Grid {
     constructor() {
         this.numColumns = rootStyles.getPropertyValue('--col'),
         this.gridHeight = rootStyles.getPropertyValue('--height').match(/\d+/)[0],
         this.gridWidth  = Math.round(windowWidth/this.numColumns),
-        this.numRows = Math.ceil(windowHeight/this.gridHeight),
+        this.numRows = Math.ceil(windowHeight/this.gridWidth),
         this.gridArr = [];
     }
 
@@ -59,24 +61,47 @@ grid.addBackground();
 document.addEventListener('pointermove', grid.lightEffect);
 
 
+logoCells.forEach(cell => {
+    let timeOut;
+
+    cell.addEventListener("mouseover", (event) => {
+        const target = event.target;
+        clearTimeout()
+        target.style.borderColor = "rgb(214, 173, 24)";
+        timeOut = setTimeout(() => {
+            target.style.borderColor = "grey";
+        }, 900)
+    });
+})
+
+
 //Light effect in svg
-// ...
+const svg = document.querySelector('svg');
+const lightCircle = document.getElementById('lightCircle');
+
+svg.addEventListener('mousemove', (event) => {
+  const pt = svg.createSVGPoint();
+  pt.x = event.clientX;
+  pt.y = event.clientY;
+  const transformedPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+  lightCircle.setAttribute('cx', transformedPt.x);
+  lightCircle.setAttribute('cy', transformedPt.y);
+});
 
 
 
+///// Dat-gui options /////
+gui.add(params, 'numCol', 1, 50).step(1).onChange(function(val) {
+    root.style.setProperty('--col', val);
+    grid.updateGrid(val);
+    grid.addBackground();
+});
 
-//Dat-gui options
-// gui.add(params, 'numCol', 1, 50).step(1).onChange(function(val) {
-//     root.style.setProperty('--col', val);
-//     grid.updateGrid(val);
-//     grid.addBackground();
-// });
-
-// gui.add(params, 'selectedBackground',['lightBack', 'darkBack']).name('Background Style').onChange(function(value) {
-//     params.selectedBackground = params[value];   
-//     grid.gridArr.forEach(grid => {
-//         grid.style.background = params[value];
-//     })
-//     document.body.style.background = params[value];
-// });
-
+gui.add(params, 'selectedBackground',['lightBack', 'darkBack']).name('Background Style').onChange(function(value) {
+    params.selectedBackground = params[value];   
+    grid.gridArr.forEach(grid => {
+        grid.style.background = params[value];
+    })
+    document.body.style.background = params[value];
+});
+gui.close();
