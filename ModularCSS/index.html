@@ -10,38 +10,32 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- In this project I use the BEM methodology for the classes -->
+    <div class="water-mark">music</div>
     <main class="main">
+
         <header class="header">
             <nav class="nav">
                 <ul>
-                    <li class="nav__link nav__link-active"><a href="#">sketches</a></li>
-                    <li class="nav__link"><a href="#">contact</a></li>
+                    <li class="nav__link nav__link-active"><a href="#">about</a></li>
                 </ul>
             </nav>
         </header>
         <section class="quote">
             <div class="quote__mask"></div>
-            <a class="quote__title">Red Art</a>
-            <p class="quote__text">We are the music makers,</p>
-            <p class="quote__text">and we are the dreamers</p>
-            <p class="quote__text">of dreams</p>
+            <p class="quote__text">
+                <span>we are </span>
+                <span>the music</span>
+                <span class="small-text">makers</span>
+                <span>we are</span>
+                <span>the dreamers</span>
+                <span class="small-text">of dreams</span>
+            </p>
         </section>
-        <div class="button">
-            <button class="button__arrow"><i class="fa-solid fa-arrow-down"></i></button>
-        </div>
     </main>
 
     <section class="grid">
         <section class="project-prev proj-prev--selected">
             <div class="project-prev__info">
-                <div class="project-prev__description">On this website, we reimagine and rework captivating generative art from Open Processing</div>
-                <div class="project-prev__number"></div>
-            </div>
-            <div class="project-prev__image" style="background-image: url(https://images.unsplash.com/photo-1729862922759-21a44271fa25?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
-                <div class="project-prev__credits">
-                    <div>Photo by <a href="https://unsplash.com/@nikita_pishchugin?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nikita Pishchugin</a> on <a href="https://unsplash.com/photos/a-red-flower-is-growing-on-a-branch-2v6OhVfC42E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></div>
-                </div>
             </div>
         </section>
         <section class="project-prev">
@@ -53,6 +47,11 @@
                 <div class="project-prev__credits"></div>
             </div>
         </section>
+        <button class="btn-15"><span>Explore our world</span></button>
+
+        <!-- <button class="button">Explore our wExplore our worldorld</button> -->
+
+        <div class="water-mark">makers</div>
     </section>
     <script src="./main.js"></script>
 </body>
