@@ -13,7 +13,9 @@
     --y: 50;
     --background: rgb(27, 27, 27);
     --mainColor: #FFB703;
+    --secondaryColor: #d8d9db;
     --height: 70px;
+    interpolate-size: allow-keywords;
 }
 
 body {
@@ -27,6 +29,7 @@ body {
     ) no-repeat; */
 }
 
+/* header */
 header {
     z-index: 999;
     height: 100vh;
@@ -38,9 +41,10 @@ header {
     backdrop-filter: blur(5px); 
 }
 
-.nav {
+.header__nav {
     display: flex;
     flex-direction: column;
+    align-items:center;
     gap:20px;
     width: 20px;
 }
@@ -51,6 +55,47 @@ header {
     grid-template-columns: repeat(3, 1fr);
 }
 
+.header__about {
+    position: absolute;
+    inset: 50px 0 0 60px;
+
+    color: var(--secondaryColor);
+    backdrop-filter: blur(5px); 
+    border: 1px solid;
+    border-color: transparent;
+
+    font-size: 0.7rem;
+    line-height: 1.5;
+    letter-spacing: 0.1rem;
+
+    z-index: 0;
+    width: 200px;
+    height: 0px;
+    overflow: hidden;
+
+    transition: height 2s ease, border-color 2s ease;
+    /* white-space: nowrap; */
+}
+
+.header__about.open {
+    width:200px ;
+    height: 300px;
+    overflow: hidden;
+
+    transition: height 2s ease;
+    border-color: var(--secondaryColor);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 85% 90%, 70% 100%, 0 100%);
+}
+
+.header__about.open p {
+    opacity: 1;
+}
+  
+.header__about p {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
 .square {
     border: 1px solid grey;
     aspect-ratio: 1;
@@ -58,7 +103,7 @@ header {
 }
 
 .nav__link {
-    color: rgb(247, 240, 228);
+    color: var(--secondaryColor);
     text-decoration: none;
     letter-spacing: 0.4rem;
     font-size: 0.8rem; 
@@ -68,6 +113,45 @@ header {
     transform: rotate(180deg)
 }
 
+.nav__link:hover {
+    color: transparent;
+}
+
+.nav__link:active {
+    transform: rotate(180deg) scale(0.98);
+    color: var(--mainColor);
+}
+
+.nav__link::after {
+    content: "About";
+    color: var(--mainColor);
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity:0;
+    transition: opacity 0.3s;
+}
+
+.nav__link:active::after {
+    opacity: 0;
+    color:transparent;
+}
+
+.nav__link:hover::after {
+    opacity: 1;
+    animation: changeText 0.3s ease infinite;
+}
+
+@keyframes changeText {
+    0% { content: "About"; }
+    25% { content: "tbouA"; }
+    50% { content: "Abtuo"; }
+    75% { content: "botAu"; }
+    100% { content: "About"; }
+}
+
+/* main */
 .mainSection {
     position: absolute;
     display: flex;
@@ -118,7 +202,10 @@ header {
     z-index: 1;
 }
 
+
+
 .mainSection__title span:hover {
+
     animation: shake 0.5s infinite;
 }
 
@@ -128,6 +215,38 @@ header {
     justify-content: flex-end;
 }
 
+/* Background light */
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    max-height: 100vh;
+    grid-template-columns: repeat(var(--col), 1fr);
+    overflow: hidden;
+    z-index: 0;
+    /* light */
+    background: 
+        radial-gradient(
+            150px 150px at calc(var(--x) * 1px) calc(var(--y) * 1px),
+            hsl(43 var(--x) 80%) 0%,
+            hsl(43 calc(sin(var(--x)) * 50) 15%),
+            transparent 100%
+        )  no-repeat fixed;
+}
+
+.grid {
+    border: 1px solid transparent;
+    position: relative;
+    /* background: 
+    linear-gradient(
+        var(--background),
+        var(--background)
+    ) no-repeat padding-box; */
+     /* color: rgba(164, 162, 162, 0.8) */
+}
+
+/* buttons */
 .buttonsContainer {
     width: 80vw;
     display: flex;
@@ -221,38 +340,7 @@ button span:hover{
     } 
 } 
     
-
-
-.container {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    max-height: 100vh;
-    grid-template-columns: repeat(var(--col), 1fr);
-    overflow: hidden;
-    z-index: 0;
-    /* light */
-    background: 
-        radial-gradient(
-            150px 150px at calc(var(--x) * 1px) calc(var(--y) * 1px),
-            hsl(43 var(--x) 80%) 0%,
-            hsl(43 calc(sin(var(--x)) * 50) 15%),
-            transparent 100%
-        )  no-repeat fixed;
-}
-
-.grid {
-    border: 1px solid transparent;
-    position: relative;
-    /* background: 
-    linear-gradient(
-        var(--background),
-        var(--background)
-    ) no-repeat padding-box; */
-     /* color: rgba(164, 162, 162, 0.8) */
-}
-
+/* dat-gui */
 .dg.ac { 
     z-index: 2; 
  }

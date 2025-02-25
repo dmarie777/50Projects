@@ -1,6 +1,8 @@
 const root = document.querySelector(':root');
 const container = document.querySelector('.container');
 const logoCells = document.querySelectorAll(".square")
+const navLink = document.querySelector(".nav__link")
+const aboutBox = document.querySelector(".header__about")
 const rootStyles = getComputedStyle(root);
 const windowHeight = window.innerHeight;
 const windowWidth = window.innerWidth;
@@ -60,7 +62,7 @@ grid.createGrid();
 grid.addBackground();
 document.addEventListener('pointermove', grid.lightEffect);
 
-
+//Animation in the navbar
 logoCells.forEach(cell => {
     let timeOut;
 
@@ -74,6 +76,12 @@ logoCells.forEach(cell => {
     });
 })
 
+navLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    aboutBox.classList.toggle('open');
+    console.log(aboutBox);
+
+})
 
 //Light effect in svg
 const svg = document.querySelector('svg');
