@@ -5,7 +5,9 @@ const navLinksArr = document.querySelectorAll('.nav__link')
 const linksContainer = document.querySelector('.nav')
 const rootStyles = getComputedStyle(document.documentElement)
 const diameterStr = rootStyles.getPropertyValue('--diameter')
-let color =''
+
+let color =  '';
+const colorsArr = Array.from(navLinksArr).map(link => link.dataset.color )
 
 //Functionality for the navbar
 linksContainer.addEventListener('mousemove', (event) => {
@@ -35,10 +37,7 @@ navLinksArr.forEach((button,i) => {
         // console.log(event.target);
         const target = event.target;
         color = target.dataset.color
-        console.log(target.tagName);
-        if(target.tagName === 'LI') {
-            document.documentElement.style.setProperty('--color', color)
-        }
+        document.documentElement.style.setProperty('--color', colorsArr[i])
     })
 })
 
@@ -46,14 +45,14 @@ navLinksArr.forEach((button,i) => {
 
 //functionality for the panels///
 panelsImg.forEach((panel, i) => {
-    panel.onmouseover = function (event) {
+    panel.addEventListener('mouseover', function (event) {
         let target = event.target;
         if (target.tagName === 'DIV') {
             removeActive()
             target.classList.add('active')
             panels[i].classList.add('active')
         }
-    }
+    })
     panel.addEventListener('mouseleave', removeActive)
 
 })
