@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --back-color: #121212;
+    --main-color: #ED0303;
+}
+
+body {
+    background: var(--back-color);
+    overflow: hidden;
+
+}
+
+main {
+    font-size: clamp(0.2rem, 0.15rem + 7vw,6rem);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-family: "Bruno Ace", sans-serif;
+    text-transform: uppercase;
+    color: var(--main-color);
+}
+
+h1 {
+    position: relative;
+    overflow: hidden;
+}
+  
+h1 span {
+    position: relative;
+    background: var(--main-color); 
+    -webkit-background-clip: text; 
+    background-clip: text;
+    color: transparent; 
+    clip-path: polygon(75% 0%, 75% 0%, 25% 100%, 25% 100%); 
+  }
+
+  @keyframes scale-mask {
+    0% {
+      clip-path: polygon(75% 0%, 75% 0%, 25% 100%, 25% 100%); 
+    }
+    100% {
+      clip-path: polygon(-25% 0%, 150% 0%, 125% 100%, -25% 100%); 
+    }
+  }
+  
+h1 span {
+    animation: scale-mask 1.5s ease forwards;
+  }
+
+span:nth-of-type(1) {
+    inset: 0 0 0 -30px;
+}
+span:nth-of-type(2) {
+    inset: 0 0 0-30px;
+    animation-delay: 0.5s;
+}
+
