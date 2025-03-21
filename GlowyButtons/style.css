@@ -12,9 +12,14 @@
     --x: 50;
     --y: 50;
     --background: rgb(27, 27, 27);
-    --mainColor: #FFB703;
+    --mainColor: hsl(43, 100%, 51%);
     --secondaryColor: #d8d9db;
+    --yellow: hsl(43, 100%, 51%);
+    --blue: hsl(200, 100%, 51%);
+    --green: hsl(126, 65%, 50%);
+    --red: hsl(0, 97%, 48%);
     --height: 70px;
+    --mainColorHue: 43;
     interpolate-size: allow-keywords;
 }
 
@@ -81,7 +86,6 @@ header {
     width:200px ;
     height: 300px;
     overflow: hidden;
-
     transition: height 2s ease;
     border-color: var(--secondaryColor);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 85% 90%, 70% 100%, 0 100%);
@@ -99,7 +103,7 @@ header {
 .square {
     border: 1px solid grey;
     aspect-ratio: 1;
-    transition: border-color 0.1s
+    transition: border-color 0.1s;
 }
 
 .nav__link {
@@ -229,8 +233,8 @@ header {
     background: 
         radial-gradient(
             150px 150px at calc(var(--x) * 1px) calc(var(--y) * 1px),
-            hsl(43 var(--x) 80%) 0%,
-            hsl(43 calc(sin(var(--x)) * 50) 15%),
+            hsl(var(--mainColorHue) var(--x) 80%) 0%,
+            hsl(var(--mainColorHue) calc(sin(var(--x)) * 50) 15%),
             transparent 100%
         )  no-repeat fixed;
 }
@@ -298,7 +302,6 @@ button:hover {
             hsl(var(--x) 80% 20%) 100%,
             transparent 100%
         ) ;
-        animation: shake 0.5s infinite;
 }
 
 button span:hover{

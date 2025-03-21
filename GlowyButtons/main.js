@@ -3,7 +3,9 @@ const container = document.querySelector('.container');
 const logoCells = document.querySelectorAll(".square")
 const navLink = document.querySelector(".nav__link")
 const aboutBox = document.querySelector(".header__about")
+const buttons = document.querySelectorAll('.buttons__brokenCorner')
 const rootStyles = getComputedStyle(root);
+
 const windowHeight = window.innerHeight;
 const windowWidth = window.innerWidth;
 
@@ -31,8 +33,7 @@ class Grid {
         for (let i=0; i<this.numRows*this.numColumns; i++) {
             const newDiv = document.createElement('div');
             newDiv.classList.add('grid');
-            container.appendChild(newDiv);
-            
+            container.appendChild(newDiv);  
         }
         this.gridArr = document.querySelectorAll('.grid');
     }
@@ -54,6 +55,7 @@ class Grid {
     lightEffect({x: pointerX, y: pointerY}) {
         document.documentElement.style.setProperty('--x', pointerX.toFixed(2));
         document.documentElement.style.setProperty('--y', pointerY.toFixed(2));
+        document.documentElement.style.setProperty('--mainColorHue', rootStyles.getPropertyValue("--mainColor").trim().match(/hsl\((\d+),/)[1]);
     }
 }
 
@@ -69,17 +71,69 @@ logoCells.forEach(cell => {
     cell.addEventListener("mouseover", (event) => {
         const target = event.target;
         clearTimeout()
-        target.style.borderColor = "rgb(214, 173, 24)";
+        target.style.borderColor = rootStyles.getPropertyValue("--mainColor");
         timeOut = setTimeout(() => {
             target.style.borderColor = "grey";
         }, 900)
     });
 })
 
+//Animation in letters
+function shuffle(textStr) {
+    const textArr = textStr.split('');
+    for(let i = textArr.length-1; i>0 ; i--) {
+        const j  = Math.floor(Math.random() * (i+1));
+        [textArr[i], textArr[j]]  = [textArr[j], textArr[i]];
+    }
+    return textArr.join('');  
+}
+
+const buttonsContentArr = Array.from(buttons).map(button => button.textContent)
+const animationOptions = {
+    duration: 300,
+    easing: 'ease',
+  };
+
+//Animation in buttons
+buttons.forEach((button, i) => {
+    let index = 0;
+    const textStr = buttonsContentArr[i];
+    const keyframes = Array.from({ length: textStr.length }, () => shuffle(textStr));
+    const interval = animationOptions.duration / keyframes.length;
+
+    button.addEventListener('mouseenter', (event) => {
+        if (button.animationInterval) {
+            clearInterval(button.animationInterval);
+        }
+
+        button.animationInterval = setInterval(() => {
+            button.textContent = keyframes[index];
+            index = (index + 1) % keyframes.length;
+        }, interval);
+    });
+
+    button.addEventListener('click', (event) => {
+        const targetColor = event.target.dataset.color;
+        document.documentElement.style.setProperty('--mainColor', targetColor);
+        console.log('targetcOLOR',targetColor)
+        
+    })
+
+    button.addEventListener('mouseleave', () => {
+        if (button.animationInterval) {
+            clearInterval(button.animationInterval);
+            button.animationInterval = null;
+        }
+
+        button.textContent = buttonsContentArr[i];
+        index = 0; 
+    });
+}) 
+
+//Navlink
 navLink.addEventListener("click", (event) => {
     event.preventDefault();
     aboutBox.classList.toggle('open');
-    console.log(aboutBox);
 
 })
 
@@ -95,8 +149,6 @@ svg.addEventListener('mousemove', (event) => {
   lightCircle.setAttribute('cx', transformedPt.x);
   lightCircle.setAttribute('cy', transformedPt.y);
 });
-
-
 
 ///// Dat-gui options /////
 gui.add(params, 'numCol', 1, 50).step(1).onChange(function(val) {
