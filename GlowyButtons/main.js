@@ -1,9 +1,10 @@
 const root = document.querySelector(':root');
 const container = document.querySelector('.container');
-const logoCells = document.querySelectorAll(".square")
-const navLink = document.querySelector(".nav__link")
-const aboutBox = document.querySelector(".header__about")
-const buttons = document.querySelectorAll('.buttons__brokenCorner')
+const logoCells = document.querySelectorAll(".square");
+const navLink = document.querySelector(".nav__link");
+const aboutBox = document.querySelector(".header__about");
+const buttons = document.querySelectorAll('.buttons__brokenCorner');
+const glowElement = document.querySelector('.glow');
 const rootStyles = getComputedStyle(root);
 
 const windowHeight = window.innerHeight;
@@ -64,7 +65,7 @@ grid.createGrid();
 grid.addBackground();
 document.addEventListener('pointermove', grid.lightEffect);
 
-//Animation in the navbar
+//Animation in the logo
 logoCells.forEach(cell => {
     let timeOut;
 
@@ -78,7 +79,13 @@ logoCells.forEach(cell => {
     });
 })
 
-//Animation in letters
+//Animation in buttons
+const buttonsContentArr = Array.from(buttons).map(button => button.textContent)
+const animationOptions = {
+    duration: 300,
+    easing: 'ease',
+  };
+
 function shuffle(textStr) {
     const textArr = textStr.split('');
     for(let i = textArr.length-1; i>0 ; i--) {
@@ -88,13 +95,15 @@ function shuffle(textStr) {
     return textArr.join('');  
 }
 
-const buttonsContentArr = Array.from(buttons).map(button => button.textContent)
-const animationOptions = {
-    duration: 300,
-    easing: 'ease',
-  };
+function glowEffect() {
+    let glowEffect;
+    clearTimeout()       
+    glowElement.classList.add("glow-animate")
+    glowEffect = setTimeout(() => {
+        glowElement.classList.remove("glow-animate")
+    }, 500)
+}
 
-//Animation in buttons
 buttons.forEach((button, i) => {
     let index = 0;
     const textStr = buttonsContentArr[i];
@@ -115,11 +124,12 @@ buttons.forEach((button, i) => {
     button.addEventListener('click', (event) => {
         const targetColor = event.target.dataset.color;
         document.documentElement.style.setProperty('--mainColor', targetColor);
-        console.log('targetcOLOR',targetColor)
-        
+        document.documentElement.style.setProperty('--mainColorHue', rootStyles.getPropertyValue("--mainColor").trim().match(/hsl\((\d+),/)[1]);
+        glowEffect();
     })
 
     button.addEventListener('mouseleave', () => {
+        
         if (button.animationInterval) {
             clearInterval(button.animationInterval);
             button.animationInterval = null;
@@ -130,14 +140,14 @@ buttons.forEach((button, i) => {
     });
 }) 
 
-//Navlink
+//Animation in the navbar
 navLink.addEventListener("click", (event) => {
     event.preventDefault();
     aboutBox.classList.toggle('open');
 
 })
 
-//Light effect in svg
+//Light effect in svg / background
 const svg = document.querySelector('svg');
 const lightCircle = document.getElementById('lightCircle');
 
