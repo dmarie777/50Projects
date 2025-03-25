@@ -1,21 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 *,
 *>::after,
 *::before {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-header {
+:root {
+    --darkColor: #222222;
+    --secondaryColor: #E5E6E9;
+    --greyColor: #AFAFAF;
+}
+
+body {
+    font-family: "Fahkwang", sans-serif;
+    background: var(--secondaryColor);
+}
+
+main {
+    min-height: 100vh;
+    background: var(--darkColor);
     text-align: center;
+    color:var(--secondaryColor);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+    font-weight: 300;
 }
 
 .content-box {
     display: flex;
-    justify-content: space-evenly;
-    margin: 100px 10px;
+    flex-direction: column;
     gap: 20px;
+
+    min-height: 100vh;
+    padding: 5rem;
+}
+
+.container {
+    display: flex;
+}
+
+.add-button-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.add-button {
+    width: 80px;
+    height: 100px;
+    background: var(--darkColor);
+    color: var(--secondaryColor);
+    text-align: center;
+    align-content: center;
 }
 
 .nodes-box {
+    flex: 4;
+    border: 1px solid var(--greyColor);
+    height: 70vh;
     display: flex;
     justify-content: space-around;
     flex-wrap:wrap;
@@ -28,10 +78,9 @@ header {
     background: blue;
 }
 
-.buttons {
-    min-width: 30%;
+/* .buttons {
+    width: 10%;
     display: flex;
-    flex-direction: column;
     gap: 20px;
-}
+} */
 
